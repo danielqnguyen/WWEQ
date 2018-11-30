@@ -7,7 +7,7 @@ class YelpApi {
     const config = {
       'Authorization': process.env.REACT_APP_KEY,
     }
-    axios.get(`https://cors-anywhere.herokuapp.com/http://api.yelp.com/v3/businesses/search?term=food&location=${location}`, { headers: config })
+    axios.get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&open_now=true&location=${location}`, { headers: config })
       .then(onSuccess)
       .catch(onError);
   }

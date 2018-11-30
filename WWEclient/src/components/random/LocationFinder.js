@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import LocationInput from './LocationInput'
 
 class LocationFinder extends Component {
   constructor(props) {

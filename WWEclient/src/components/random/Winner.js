@@ -33,37 +33,39 @@ class Winner extends React.Component {
       return <p key={idx}>{item}</p>
     })
     let hi = this.state.information
-    if (this.state.url === "N/A") {
-      return (
-        <React.Fragment>
-          <div>
-            <div className="card col-md-6">
-              <h1>{hi.name}</h1>
-              <img src={hi.image_url} height="400px" width="600px" />
-              <h4>Telephone: {hi.display_phone}</h4>
-              <h4>Address: {list}</h4>
-              <h4>Website:{this.state.url}</h4>
+    // if (this.state.url === "N/A") {
+    return (
+      <React.Fragment>
+        <div className="container-fluid flex-grow-1 container-p-y">
+          <div className="card mb-4 col-md-6 offset-md-3">
+            <h1>{hi.name}</h1>
+            <img src={hi.image_url} height="200px" width="200px" alt="" />
+            <h4>Telephone: {hi.display_phone}</h4>
+            <h4>Address: {list}</h4>
+            <h4>Website:{this.state.url}</h4>
+            <div>
               <button onClick={this.onClick} className="btn btn-success">More</button>
             </div>
           </div>
-        </React.Fragment>
-      )
-    } else {
-      return (
-        <React.Fragment>
-          <div>
-            <div className="card col-md-6">
-              <h1>{hi.name}</h1>
-              <img src={hi.image_url} height="400px" width="600px" />
-              <h4>Telephone: {hi.display_phone}</h4>
-              <h4>Address: {list}</h4>
-              <h4>Website: <a href={this.state.url}>{this.state.url}</a></h4>
-              <button onClick={this.onClick} className="btn btn-success">More</button>
-            </div>
-          </div>
-        </React.Fragment>
-      )
-    }
+        </div>
+      </React.Fragment>
+    )
+    // } else {
+    //   return (
+    //     <React.Fragment>
+    //       <div>
+    //         <div className="card col-md-6">
+    //           <h1>{hi.name}</h1>
+    //           <img src={hi.image_url} height="200px" width="200px" alt="" />
+    //           <h4>Telephone: {hi.display_phone}</h4>
+    //           <h4>Address: {list}</h4>
+    //           <h4>Website: <a href={this.state.url}>{this.state.url}</a></h4>
+    //           <button onClick={this.onClick} className="btn btn-success">More</button>
+    //         </div>
+    //       </div>
+    //     </React.Fragment>
+    //   )
+    // }
   }
 }
 

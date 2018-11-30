@@ -9,20 +9,19 @@ import Scraping from './components/users/TestScraping'
 const Navigation = () => (
   <Router>
     <div>
-      <button>
+      <button type="button" className="btn btn-dark">
         <Link to="/">Home</Link>
       </button>
-      <button>
+      <button type="button" className="btn btn-dark">
         <Link to="/random">Randomizer</Link>
       </button>
-      <button>
+      <button type="button" className="btn btn-dark">
         <Link to="/register">register</Link>
       </button>
-      <button>
+      <button type="button" className="btn btn-dark">
         <Link to="/test">test</Link>
       </button>
-      <hr />
-      <hr />
+
 
       <Route exact path="/" component={LocationFinder} />
       <Route exact path="/random" component={FoodRandomizer} />

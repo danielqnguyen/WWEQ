@@ -40,12 +40,18 @@ class Register extends Component {
       case "email":
         emailValid = value.match(/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
         fieldValidationError.email = emailValid;
+        break;
       case "password":
         passwordValid = value.length > 5;
         fieldValidationError.password = passwordValid;
+        break;
       case "confirmPassword":
         confirmPasswordValid = value = this.state.password
-        fieldValidationError.confirmPassword = confirmPasswordValid
+        fieldValidationError.confirmPassword = confirmPasswordValid;
+        break;
+      default:
+        break;
+
     }
     this.setState(
       {

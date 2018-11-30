@@ -23,15 +23,14 @@ class FoodRandomizer extends React.Component {
       }, error => console.error(error))
     } else {
       YelpApi.yelpTen(this.props.location.location, response => {
-        this.setState({ restaurant: response.data.businesses },
-          error => console.error(error))
-      })
+        this.setState({ restaurant: response.data.businesses })
+      },
+        error => console.error(error))
     }
   }
 
   pause() {
     this.slider.slickPause();
-    console.log(this.state)
   }
 
   play() {
@@ -43,28 +42,29 @@ class FoodRandomizer extends React.Component {
     info: item.id
   })
 
-
   render() {
     const list = this.state.restaurant.map((item, index) => {
+      console.log(item)
       return <div key={index}>
         <a onClick={() => this.onClick(item)}>
           <img src={item.image_url}
             height="400px"
             width="600px"
+            alt={item.name}
           />
         </a>
       </div >
     })
     const settings = {
       className: "center",
-      dots: true,
-      autoplay: true,
+      dots: false,
+      autoplay: false,
       autoplaySpeed: 1,
       speed: 100,
       arrows: false,
       slidesToShow: 3,
       centerPadding: "10px",
-      useTransform: false
+      useTransform: false,
     };
     return (
       <React.Fragment>
@@ -72,7 +72,7 @@ class FoodRandomizer extends React.Component {
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
           </Slider>
-          <button className="btn btn-success" onClick={this.play}>Play</button>
+          <button className="btn btn-success float-center" onClick={this.play}>Play</button>
           <button className="btn btn-danger" onClick={this.pause}> Stop </button>
         </div>
 

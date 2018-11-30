@@ -8,7 +8,6 @@ const Testform = props => {
         <TextInput
           name="url"
           label="url"
-          name="url"
           type="text"
           value={props.url}
           onChange={props.onChange}
