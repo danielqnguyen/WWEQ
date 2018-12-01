@@ -12,7 +12,7 @@ class Winner extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     if (!("info" in this.props.location)) {
       this.props.history.push("/")
     } else {
@@ -32,40 +32,45 @@ class Winner extends React.Component {
     const list = this.state.address.map((item, idx) => {
       return <p key={idx}>{item}</p>
     })
-    let hi = this.state.information
-    // if (this.state.url === "N/A") {
-    return (
-      <React.Fragment>
-        <div className="container-fluid flex-grow-1 container-p-y">
-          <div className="card mb-4 col-md-6 offset-md-3">
-            <h1>{hi.name}</h1>
-            <img src={hi.image_url} height="200px" width="200px" alt="" />
-            <h4>Telephone: {hi.display_phone}</h4>
-            <h4>Address: {list}</h4>
-            <h4>Website:{this.state.url}</h4>
-            <div>
-              <button onClick={this.onClick} className="btn btn-success">More</button>
+    if (this.state.url === "N/A") {
+      return (
+        <React.Fragment>
+          <div className="container-fluid flex-grow-1 container-p-y">
+            <div className="card mb-4 col-md-6 offset-md-3">
+              <div className="card-body">
+                <h1>{this.state.information.name}</h1>
+                <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
+                <h4>Telephone: {this.state.information.display_phone}</h4>
+                <h4>Address: {list}</h4>
+                <h4>Website: "N/A" </h4>
+                <div>
+                  <button onClick={this.onClick} className="btn btn-success">More</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </React.Fragment>
-    )
-    // } else {
-    //   return (
-    //     <React.Fragment>
-    //       <div>
-    //         <div className="card col-md-6">
-    //           <h1>{hi.name}</h1>
-    //           <img src={hi.image_url} height="200px" width="200px" alt="" />
-    //           <h4>Telephone: {hi.display_phone}</h4>
-    //           <h4>Address: {list}</h4>
-    //           <h4>Website: <a href={this.state.url}>{this.state.url}</a></h4>
-    //           <button onClick={this.onClick} className="btn btn-success">More</button>
-    //         </div>
-    //       </div>
-    //     </React.Fragment>
-    //   )
-    // }
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <div className="container-fluid flex-grow-1 container-p-y">
+            <div className="card mb-4 col-md-4 offset-md-4">
+              <h1>{this.state.information.name}</h1>
+              <div className="card-body">
+                <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
+                <h4>Telephone: {this.state.information.display_phone}</h4>
+                <h4>Address: {list}</h4>
+                <h4>Website:<a href={("www." + this.state.url)}> {this.state.url}</a></h4>
+                <div>
+                  <button onClick={this.onClick} className="btn btn-success">More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
+      )
+    }
   }
 }
 
