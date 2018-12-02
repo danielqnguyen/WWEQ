@@ -2,7 +2,6 @@ import axios from 'axios'
 
 class UsersService {
   static register(data, onSuccess, onError) {
-    console.log(data)
     axios.post("/api/account/register", data)
       .then(response => onSuccess('success', response))
     // .catch(error => onError(error));
@@ -15,18 +14,35 @@ class UsersService {
       .catch(onError);
   }
 
-  // static testScraper(data, onSuccess, onError) {
-  //   console.log(JSON.stringify(data))
+  static crudRegister(data, onSuccess, onError) {
+    axios.post("/api/food", data)
+      .then(response => onSuccess('success', response))
+    // .catch(error => onError(error));
+  }
 
-  //   const url = '/api/testScrape'
-  //   const config = {
-  //     method: "POST",
-  //     yelpUrl: JSON.stringify(data)
-  //   }
-  //   axios(url, config)
-  //     .then(onSuccess)
-  //     .catch(onError)
-  // }
+  static crudById(id, onSuccess, onError) {
+    axios.get(`/api/food/${id}`)
+      .then(response => onSuccess('success', response))
+    // .catch(error => onError(error));
+  }
+
+  static crudAll(onSuccess, onError) {
+    axios.get("/api/food")
+      .then(response => onSuccess('success', response))
+    // .catch(error => onError(error));
+  }
+
+  static crudUpdate(id, onSuccess, onError) {
+    axios.put(`/api/food/${id}`)
+      .then(response => onSuccess('success', response))
+    // .catch(error => onError(error));
+  }
+
+  static crudDelete(id, onSuccess, onError) {
+    axios.delete(`/api/food/${id}`)
+      .then(response => onSuccess('success', response))
+    // .catch(error => onError(error));
+  }
 }
 
 export default UsersService

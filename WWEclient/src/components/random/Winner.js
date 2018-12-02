@@ -37,14 +37,16 @@ class Winner extends React.Component {
         <React.Fragment>
           <div className="container-fluid flex-grow-1 container-p-y">
             <div className="card mb-4 col-md-6 offset-md-3">
-              <div className="card-body">
+              <div className="card-header">
                 <h1>{this.state.information.name}</h1>
-                <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
-                <h4>Telephone: {this.state.information.display_phone}</h4>
-                <h4>Address: {list}</h4>
-                <h4>Website: "N/A" </h4>
-                <div>
-                  <button onClick={this.onClick} className="btn btn-success">More</button>
+                <div className="card-body">
+                  <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
+                  <h4>Telephone: {this.state.information.display_phone}</h4>
+                  <h4>Address: {list}</h4>
+                  <h4>Website: "N/A" </h4>
+                  <div>
+                    <button onClick={this.onClick} className="btn btn-success">More</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -55,15 +57,17 @@ class Winner extends React.Component {
       return (
         <React.Fragment>
           <div className="container-fluid flex-grow-1 container-p-y">
-            <div className="card mb-4 col-md-4 offset-md-4">
-              <h1>{this.state.information.name}</h1>
-              <div className="card-body">
-                <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
-                <h4>Telephone: {this.state.information.display_phone}</h4>
-                <h4>Address: {list}</h4>
-                <h4>Website:<a href={("www." + this.state.url)}> {this.state.url}</a></h4>
-                <div>
-                  <button onClick={this.onClick} className="btn btn-success">More</button>
+            <div className="card mb-4 col-md-6 offset-md-3">
+              <div className="card-header">
+                <h1>{this.state.information.name}</h1>
+                <div className="card-body">
+                  <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
+                  <h4>Telephone: {this.state.information.display_phone}</h4>
+                  <h4>Address: {list}</h4>
+                  <h4>Website:<a href={("www." + this.state.url)}> {this.state.url}</a></h4>
+                  <div>
+                    <button onClick={this.onClick} className="btn btn-success">More</button>
+                  </div>
                 </div>
               </div>
             </div>
