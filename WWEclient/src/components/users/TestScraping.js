@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Testform from './Testform'
-import UsersService from './UsersService'
+
+var Rating = require('react-rating');
 
 class Scraping extends Component {
   constructor(props) {
@@ -17,18 +17,11 @@ class Scraping extends Component {
     console.log(this.state)
   }
 
-  onClick = () => {
-    console.log(this.state)
-    UsersService.testScraper(this.state, response => { console.log(response) })
-  }
-
   render() {
     return (
-      <Testform
-        url={this.state.url}
-        onChange={this.onChange}
-        onClick={this.onClick}
-      />
+      <div>
+        <Rating {...this.props} initialRating={this.state.value} />
+      </div>
     )
   }
 }

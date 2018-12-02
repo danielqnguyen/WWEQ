@@ -49,7 +49,7 @@ class FoodRandomizer extends React.Component {
         <a onClick={() => this.onClick(item)}>
           <img src={item.image_url}
             height="400px"
-            width="600px"
+            width="400px"
             alt={item.name}
           />
         </a>
@@ -58,7 +58,7 @@ class FoodRandomizer extends React.Component {
     const settings = {
       className: "center",
       dots: false,
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 1,
       speed: 100,
       arrows: false,
@@ -75,7 +75,6 @@ class FoodRandomizer extends React.Component {
           <button className="btn btn-success float-center" onClick={this.play}>Play</button>
           <button className="btn btn-danger" onClick={this.pause}> Stop </button>
         </div>
-
       </React.Fragment >
     );
   }

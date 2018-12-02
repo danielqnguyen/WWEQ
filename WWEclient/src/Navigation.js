@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import LocationFinder from './components/random/LocationFinder'
 import FoodRandomizer from './components/random/TestRandom'
 import Winner from './components/random/Winner'
-import Register from './components/users/Register'
+import RegisterFood from './components/users/RegisterFood'
 import Scraping from './components/users/TestScraping'
 
 const Navigation = () => (
@@ -26,7 +26,7 @@ const Navigation = () => (
       <Route exact path="/" component={LocationFinder} />
       <Route exact path="/random" component={FoodRandomizer} />
       <Route exact path="/winner" component={Winner} />
-      <Route path="/register" component={Register} />
+      <Route path="/register" component={RegisterFood} />
       <Route path="/test" component={Scraping} />
 
 
