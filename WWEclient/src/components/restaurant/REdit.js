@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import RegisterFoodForm from './RegisterFoodForm'
-import UsersServices from './UsersService'
+import RegisterFoodForm from '../users/RegisterFoodForm'
+import UsersServices from '../users/UsersService'
 
-class RegisterFood extends Component {
+class REdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       name: '',
       categories: '',
       phone: '',
@@ -36,6 +37,28 @@ class RegisterFood extends Component {
       formValid: false
     }
   }
+
+  componentDidMount() {
+    let tId = this.props.match.params.id
+    UsersServices.crudById(tId, this.onGetSuccess, this.onError)
+  }
+
+  onGetSuccess = resp => this.setState({
+    id: resp.data.Id,
+    name: resp.data.Item.Name,
+    categories: resp.data.Item.Categories,
+    phone: resp.data.Item.Phone,
+    hours: resp.data.Item.Hours,
+    website: resp.data.Item.Website,
+    address1: resp.data.Item.Address1,
+    address2: resp.data.Item.Address2,
+    city: resp.data.Item.City,
+    state: resp.data.Item.State,
+    zip: resp.data.Item.Zip,
+    range: resp.data.Item.Range,
+    rating: resp.data.Item.Rating,
+    delivery: resp.data.Item.Delivery,
+  })
 
   onChange = evt => {
     const key = evt.target.name;
@@ -110,7 +133,7 @@ class RegisterFood extends Component {
     })
   }
 
-  onClick = () => this.state.formValid ? UsersServices.crudRegister(this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
+  onClick = () => this.state.formValid ? UsersServices.crudUpdate(this.state.id, this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
 
   // onClick = () => console.log(this.state)
 
@@ -156,4 +179,4 @@ class RegisterFood extends Component {
   }
 }
 
-export default RegisterFood
+export default REdit

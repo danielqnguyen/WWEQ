@@ -19,5 +19,6 @@ namespace WWEQ.Web.Models
         public string Range { get; set; }
         public string Rating { get; set; }
         public string Delivery { get; set; }
+        public string Website { get; set; }
     }
 }

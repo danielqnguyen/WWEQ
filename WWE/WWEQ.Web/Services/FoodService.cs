@@ -44,6 +44,7 @@ namespace WWEQ.Web.Services
                     paramList.AddWithValue("@Range", model.Range);
                     paramList.AddWithValue("@Rating", model.Rating);
                     paramList.AddWithValue("@Delivery", model.Delivery);
+                    paramList.AddWithValue("@Website", model.Website);
                 },
                 returnParameters: delegate (SqlParameterCollection paramList)
                 {
@@ -68,6 +69,7 @@ namespace WWEQ.Web.Services
             model.Range = reader.GetString(index++);
             model.Rating = reader.GetString(index++);
             model.Delivery = reader.GetString(index++);
+            model.Website = reader.GetString(index++);
 
             return model;
         }
@@ -126,6 +128,7 @@ namespace WWEQ.Web.Services
                     paramList.AddWithValue("@Range", model.Range);
                     paramList.AddWithValue("@Rating", model.Rating);
                     paramList.AddWithValue("@Delivery", model.Delivery);
+                    paramList.AddWithValue("@Website", model.Website);
                 },
                 returnParameters: delegate (SqlParameterCollection paramList)
                 {
