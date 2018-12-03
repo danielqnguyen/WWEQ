@@ -28,6 +28,10 @@ class Winner extends React.Component {
 
   onClick = () => console.log(this.state)
 
+  // redirect = () => window.locationxx = JSON.stringify(this.state.url);
+
+  redirect = () => console.log(this.state.url)
+
   render() {
     const list = this.state.address.map((item, idx) => {
       return <p key={idx}>{item}</p>
@@ -64,7 +68,8 @@ class Winner extends React.Component {
                   <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
                   <h4>Telephone: {this.state.information.display_phone}</h4>
                   <h4>Address: {list}</h4>
-                  <h4>Website:<a href={("www." + this.state.url)}> {this.state.url}</a></h4>
+                  <h4>Website:<a href={("www." + this.state.url)} target="_blank"> {this.state.url}</a></h4>
+                  <h4>Website:<span onClick={() => this.redirect()} target="_blank"> {this.state.url}</span></h4>
                   <div>
                     <button onClick={this.onClick} className="btn btn-success">More</button>
                   </div>

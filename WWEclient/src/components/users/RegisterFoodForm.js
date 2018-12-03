@@ -45,9 +45,17 @@ const RegisterFoodForm = props => {
             placeholder="hours"
             onChange={props.onChange}
           />
+          <TextInput
+            name="website"
+            label="website"
+            type="text"
+            value={props.website}
+            placeholder="website"
+            onChange={props.onChange}
+          />
           <TextInputWithValidation
-            name="address"
-            label="address"
+            name="address1"
+            label="street address"
             type="text"
             value={props.address1}
             placeholder="address"
@@ -56,43 +64,49 @@ const RegisterFoodForm = props => {
             hintText="Please enter an address"
           />
           <TextInput
-            name="address"
-            label="address"
+            name="address2"
+            label="street address 2 (optional)"
             type="text"
             value={props.address2}
             placeholder="address"
             onChange={props.onChange}
           />
-          <TextInputWithValidation
-            name="city"
-            label="city"
-            type="text"
-            value={props.city}
-            placeholder="city"
-            onChange={props.onChange}
-            isValid={props.cityValid}
-            hintText="Please enter an city"
-          />
-          <TextInputWithValidation
-            name="state"
-            label="state"
-            type="text"
-            value={props.state}
-            placeholder="state"
-            onChange={props.onChange}
-            isValid={props.stateValid}
-            hintText="Please enter an state"
-          />
-          <TextInputWithValidation
-            name="zip"
-            label="zip"
-            type="text"
-            value={props.zip}
-            placeholder="zip"
-            onChange={props.onChange}
-            isValid={props.zipValid}
-            hintText="Please enter an zip"
-          />
+          <div style={{ display: "inline-block" }}>
+            <TextInputWithValidation
+              name="city"
+              label="city"
+              type="text"
+              value={props.city}
+              placeholder="city"
+              onChange={props.onChange}
+              isValid={props.cityValid}
+              hintText="Please enter an city"
+            />
+          </div>
+          <div style={{ display: "inline-block" }}>
+            <TextInputWithValidation
+              name="state"
+              label="state"
+              type="text"
+              value={props.state}
+              placeholder="state"
+              onChange={props.onChange}
+              isValid={props.stateValid}
+              hintText="Please enter an state"
+            />
+          </div>
+          <div style={{ display: "inline-block" }}>
+            <TextInputWithValidation
+              name="zip"
+              label="zip"
+              type="text"
+              value={props.zip}
+              placeholder="zip"
+              onChange={props.onChange}
+              isValid={props.zipValid}
+              hintText="Please enter an zip"
+            />
+          </div>
           <TextInput
             name="range"
             label="range"

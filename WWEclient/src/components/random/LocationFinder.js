@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Rating from 'react-rating'
-
 
 class LocationFinder extends Component {
   constructor(props) {
@@ -24,15 +22,9 @@ class LocationFinder extends Component {
       : this.props.history.push({ pathname: '/random', location: this.state.location })
   }
 
-  // test = value => {
-  // console.log(value)
-  // this.setState({value:value})
-  // }
   render() {
     return (
       <React.Fragment>
-        {/* <Rating  placeholderRating={this.state.value} onClick={this.test} /> */}
-
         <div className="d-flex justify-content-center align-items-center">
           <b><label className="form-label" htmlFor="Location" style={{ color: "green" }}>Location</label></b>
         </div>
