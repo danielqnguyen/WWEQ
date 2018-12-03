@@ -5,7 +5,7 @@ import LocationFinder from './components/random/LocationFinder'
 import FoodRandomizer from './components/random/TestRandom'
 import Winner from './components/random/Winner'
 import RegisterFood from './components/users/RegisterFood'
-import Scraping from './components/users/TestScraping'
+// import Scraping from './components/users/TestScraping'
 import AllRProfile from './components/restaurant/AllRProfile'
 import RProfile from './components/restaurant/RProfile'
 import REdit from './components/restaurant/REdit'
@@ -40,9 +40,9 @@ class Navigation extends React.Component {
                 <NavItem>
                   <NavLink to="/random">Randomizer</NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink to="/register">Register</NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <Dropdown>
                     <DropdownToggle nav caret>
@@ -50,7 +50,7 @@ class Navigation extends React.Component {
                     </DropdownToggle>
                     <DropdownMenu right>
                       <DropdownItem href="/arprofile">All Profiles</DropdownItem>
-                      <DropdownItem href="#!">Another Action</DropdownItem>
+                      <DropdownItem href="/register">Register</DropdownItem>
                       <DropdownItem href="#!">Something else here</DropdownItem>
                       <DropdownItem href="#!">Something else here</DropdownItem>
                     </DropdownMenu>

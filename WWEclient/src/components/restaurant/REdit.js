@@ -44,7 +44,7 @@ class REdit extends Component {
   }
 
   onGetSuccess = resp => this.setState({
-    id: resp.data.Id,
+    id: resp.data.Item.Id,
     name: resp.data.Item.Name,
     categories: resp.data.Item.Categories,
     phone: resp.data.Item.Phone,
@@ -58,6 +58,13 @@ class REdit extends Component {
     range: resp.data.Item.Range,
     rating: resp.data.Item.Rating,
     delivery: resp.data.Item.Delivery,
+    formValid: true,
+    nameValid: true,
+    categoriesValid: true,
+    address1Valid: true,
+    cityValid: true,
+    stateValid: true,
+    zipValid: true,
   })
 
   onChange = evt => {
@@ -105,7 +112,6 @@ class REdit extends Component {
         break;
       default:
         break;
-
     }
     this.setState(
       {
@@ -137,7 +143,10 @@ class REdit extends Component {
 
   // onClick = () => console.log(this.state)
 
-  onSuccess = response => console.log(response)
+  onSuccess = () => this.props.history.push({
+    pathname: "/rprofile",
+    id: this.state.id
+  })
 
   onError = response => console.log(response)
 

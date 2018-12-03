@@ -91,6 +91,23 @@ namespace WWEQ.Web.Services
             return model;
         }
 
+        public FoodDomainModel SelectByName(string name)
+        {
+            FoodDomainModel model = new FoodDomainModel();
+            _dataProvider.ExecuteCmd(
+                "Food_SelectByName",
+                inputParamMapper: delegate (SqlParameterCollection paramList)
+                {
+                    paramList.AddWithValue("@Name", name);
+                },
+                singleRecordMapper: delegate (IDataReader reader, short set)
+                {
+                    int index = 0;
+                    model = MapFood(reader, index);
+                });
+            return model;
+        }
+
         public List<FoodDomainModel> SelectAll()
         {
             List<FoodDomainModel> results = new List<FoodDomainModel>();

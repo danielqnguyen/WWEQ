@@ -7,12 +7,21 @@ class AllRProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profiles: []
+      profiles: [],
+      name: ''
     }
   }
 
   componentDidMount() {
     UserServices.crudAll(this.onSuccess, this.onError)
+  }
+
+  onChange = evt => {
+    const key = evt.target.name;
+    const val = evt.target.value;
+    console.log(key, val)
+    this.setState({ [key]: val }
+    );
   }
 
   onSuccess = response => this.setState({ profiles: response.data.Items })
@@ -22,6 +31,11 @@ class AllRProfile extends Component {
   viewProfile = id => this.props.history.push({
     pathname: "/rprofile",
     id: id
+  })
+
+  onNameSuccess = resp => this.props.history.push({
+    pathname: "/rprofile",
+    id: resp.data.Item.Id
   })
 
   render() {
@@ -42,15 +56,19 @@ class AllRProfile extends Component {
               <div className="input-group">
                 <div className="input-group">
                   <input
-                    name="transactionNum"
+                    name="name"
                     type="text"
-                    value={this.state.transactionNum}
+                    value={this.state.name}
                     onChange={this.onChange}
                     className="form-control"
                   />
                   <span className="input-group-append">
                     <button className="btn btn-success btn-sm"
                       onClick={() => {
+                        UserServices.crudSelectByName(
+                          this.state.name,
+                          this.onNameSuccess,
+                          this.onError)
                       }}
                     >
                       Search for Restaurant</button>

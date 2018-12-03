@@ -26,6 +26,12 @@ class UsersService {
       .catch(onError);
   }
 
+  static crudSelectByName(name, onSuccess, onError) {
+    axios.get(`/api/food/${name}`)
+      .then(onSuccess)
+      .catch(onError);
+  }
+
   static crudAll(onSuccess, onError) {
     axios.get("/api/food")
       .then(onSuccess)

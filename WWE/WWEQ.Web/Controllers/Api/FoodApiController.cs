@@ -44,6 +44,15 @@ namespace WWEQ.Web.Controllers.Api
         }
 
         [HttpGet]
+        [Route("{name}")]
+        public HttpResponseMessage SelectByName(string name)
+        {
+            ItemResponse<FoodDomainModel> resp = new ItemResponse<FoodDomainModel>();
+            resp.Item = _foodService.SelectByName(name);
+            return Request.CreateResponse(HttpStatusCode.OK, resp);
+        }
+
+        [HttpGet]
         [Route]
         public HttpResponseMessage SelectAll()
         {
