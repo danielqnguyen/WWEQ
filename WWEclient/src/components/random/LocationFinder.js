@@ -32,7 +32,7 @@ class LocationFinder extends Component {
           <hr />
           <input type="text" className="form-control" placeholder="Irvine" name="location" onChange={this.onChange} value={this.state.location} />
           <div className="input-group-append">
-            <button className="btn btn-success" type="button" onClick={this.onClick}>Button</button>
+            <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
         </div>
       </React.Fragment>

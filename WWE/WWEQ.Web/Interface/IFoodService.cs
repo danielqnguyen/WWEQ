@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using WWEQ.Web.Models;
 using WWEQ.Web.Models.Domain;
 
@@ -15,6 +11,7 @@ namespace WWEQ.Web.Interface
         List<FoodDomainModel> SelectAll();
         //List<FoodDomainModel> Pagination(int pageNumber, int rowsToDisplay);
         FoodDomainModel SelectById(int id);
+        FoodDomainModel SelectByName(string name);
         int Update(FoodDomainModel model);
     }
 }

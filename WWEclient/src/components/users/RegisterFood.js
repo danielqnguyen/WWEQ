@@ -82,7 +82,6 @@ class RegisterFood extends Component {
         break;
       default:
         break;
-
     }
     this.setState(
       {
@@ -114,8 +113,7 @@ class RegisterFood extends Component {
 
   // onClick = () => console.log(this.state)
 
-  onSuccess = response => console.log(response)
-
+  onSuccess = response => this.props.history.push("/arprofile")
   onError = response => console.log(response)
 
   render() {
