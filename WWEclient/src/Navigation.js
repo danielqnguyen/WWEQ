@@ -13,7 +13,7 @@ import REdit from './components/restaurant/REdit'
 class Navigation extends React.Component {
   state = {
     isOpen: false
-  };
+  }
 
   toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
 

@@ -59,7 +59,7 @@ class RProfile extends Component {
               icon="ios-bonfire-outline"
               rotate={false}
               fontSize="35px"
-              color="rgb(125, 176, 24)"
+              color="rgb(255,0,0)"
               onClick={() => this.deleteClick(hi.Id)}
               style={{ float: "right" }}
             />

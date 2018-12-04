@@ -82,7 +82,6 @@ class RegisterFood extends Component {
         break;
       default:
         break;
-
     }
     this.setState(
       {
