@@ -40,7 +40,6 @@ class RegisterFood extends Component {
   onChange = evt => {
     const key = evt.target.name;
     const val = evt.target.value;
-    console.log(key, val)
     this.setState({ [key]: val },
       this.validateField(key, val)
     );

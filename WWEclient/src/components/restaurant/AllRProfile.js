@@ -19,7 +19,6 @@ class AllRProfile extends Component {
   onChange = evt => {
     const key = evt.target.name;
     const val = evt.target.value;
-    console.log(key, val)
     this.setState({ [key]: val }
     );
   }
@@ -40,7 +39,6 @@ class AllRProfile extends Component {
 
   render() {
     const list = this.state.profiles.map(item => {
-      console.log(item)
       return <tr key={item.Id}
         className="col-s-6 col-md-6 col-lg-6">
         <td>{item.Name}</td>

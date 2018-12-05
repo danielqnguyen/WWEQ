@@ -11,11 +11,14 @@ import RProfile from './components/restaurant/RProfile'
 import REdit from './components/restaurant/REdit'
 
 class Navigation extends React.Component {
-  state = {
-    isOpen: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      isOpen: false
+    }
   }
 
-  toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
+  toggleCollapse = () => this.setState({ isOpen: !this.state.isOpen });
 
   render() {
     return (
@@ -34,7 +37,7 @@ class Navigation extends React.Component {
               navbar
             >
               <NavbarNav left>
-                <NavItem active>
+                <NavItem>
                   <NavLink to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>

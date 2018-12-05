@@ -128,6 +128,7 @@ const RegisterFoodForm = props => {
             type="text"
             value={props.delivery}
             onChange={props.onChange}
+            placeholder="yes or no"
           />
           <button
             style={{ width: 283 }}
@@ -135,7 +136,7 @@ const RegisterFoodForm = props => {
             className="btn btn-primary btn-block mt-4"
             onClick={props.onClick}
           >
-            Sign Up
+            Submit
       </button>
         </div>
       </PerfectScrollbar>

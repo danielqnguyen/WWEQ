@@ -14,7 +14,6 @@ class Scraping extends Component {
     const key = evt.target.name;
     const val = evt.target.value;
     this.setState({ [key]: val })
-    console.log(this.state)
   }
 
   render() {

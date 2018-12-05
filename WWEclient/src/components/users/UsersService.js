@@ -8,7 +8,6 @@ class UsersService {
   }
 
   static testScraper(body, onSuccess, onError) {
-    console.log(body)
     axios.post("/api/testscrape", body)
       .then(onSuccess)
       .catch(onError);

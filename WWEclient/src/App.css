@@ -3,20 +3,6 @@
 }
 
 .background {
-  /* background-image: url("1.jpg");
-  background-size: cover;
-  min-height: 200%;
-  min-width: 100%;
-  width: 800px;
-  height: 800px;
-  background-position: center center;
-  -webkit-background-size: cover;
-  position: absolute;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  top: 0;
-  left: 0; */
-  
   background-image: url("1.jpg");
   background-position: center center;
   background-attachment: fixed;
@@ -38,4 +24,17 @@
   position: relative;
   width: 100%;
   height: 500px;
+}
+
+.w3-container {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.test1{
+  padding-top: 10px
+}
+
+.test3{
+  padding-bottom: 10px
 }
