@@ -5,7 +5,6 @@ class LocationFinder extends Component {
     super(props);
     this.state = {
       location: '',
-      // value: 0
     }
   }
 
@@ -13,7 +12,6 @@ class LocationFinder extends Component {
     const key = evt.target.name;
     const val = evt.target.value;
     this.setState({ [key]: val })
-    console.log(this.state)
   }
 
   onClick = () => {
@@ -26,15 +24,16 @@ class LocationFinder extends Component {
     return (
       <React.Fragment>
         <div className="d-flex justify-content-center align-items-center">
-          <b><label className="form-label" htmlFor="Location" style={{ color: "green" }}>Location</label></b>
+          <h2><label className="form-label" htmlFor="Location" style={{ color: "Lime" }}>Location</label></h2>
         </div>
-        <div className="d-flex justify-content-center align-items-center col-xs-3 col-s-3 col-md-3 col-lg-3 offset-md-5">
-          <hr />
+        <br />
+        <div className="d-flex justify-content-center w3-container">
           <input type="text" className="form-control" placeholder="Irvine" name="location" onChange={this.onChange} value={this.state.location} />
           <div className="input-group-append">
             <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
         </div>
+        {/* <span style={{ backgroundColor: "#FFFF00" }}>Your highlighted text here.</span> */}
       </React.Fragment>
     )
   }

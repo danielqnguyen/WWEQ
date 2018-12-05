@@ -7,16 +7,15 @@ class FoodRandomizer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slickPause: false,
       location: '',
-      restaurant: []
+      restaurant: [],
+      activeSlide: 0
     }
     this.pause = this.pause.bind(this);
     this.play = this.play.bind(this);
   }
 
   componentDidMount() {
-    console.log(this.props.location)
     if (!("location" in this.props.location)) {
       YelpApi.yelpTen('irivne', response => {
         this.setState({ restaurant: response.data.businesses })
@@ -44,7 +43,6 @@ class FoodRandomizer extends React.Component {
 
   render() {
     const list = this.state.restaurant.map((item, index) => {
-      console.log(item)
       return <div key={index}>
         <a onClick={() => this.onClick(item)}>
           <img src={item.image_url}
@@ -65,6 +63,7 @@ class FoodRandomizer extends React.Component {
       slidesToShow: 3,
       centerPadding: "10px",
       useTransform: false,
+      beforeChange: (next) => this.setState({ activeSlide: next })
     };
     return (
       <React.Fragment>

@@ -17,9 +17,7 @@ class Winner extends React.Component {
     if (!("info" in this.props.location)) {
       this.props.history.push("/")
     } else {
-      console.log(this.props.location.info)
       YelpApi.yelpById(this.props.location.info, response => {
-        console.log(response)
         let yelpfirst = response.data
         UsersService.testScraper({ "url": yelpfirst.url }, response => { this.setState({ url: response.data, information: yelpfirst, address: yelpfirst.location.display_address, categories: yelpfirst.categories }) },
           error => { this.setState({ url: "N/A", information: yelpfirst, address: yelpfirst.location.display_address }) })
@@ -27,11 +25,7 @@ class Winner extends React.Component {
     }
   }
 
-  onClick = () => console.log(this.state)
-
-  // redirect = () => window.locationxx = JSON.stringify(this.state.url);
-
-  redirect = () => console.log(this.state.url)
+  // onClick = () => console.log(this.state)
 
   render() {
     const list = this.state.address.map((item, idx) => {
@@ -43,7 +37,7 @@ class Winner extends React.Component {
     if (this.state.url === "N/A") {
       return (
         <React.Fragment>
-          <div className="container-fluid flex-grow-1 container-p-y">
+          <div className="container-fluid flex-grow-1 container-p-y test1">
             <div className="card mb-4 col-md-5 offset-md-3">
               <div className="card-header">
                 <h1>{this.state.information.name}</h1>
@@ -53,9 +47,9 @@ class Winner extends React.Component {
                   <h5>Address: {list}</h5>
                   <h5>Categories: {cat}</h5>
                   <h5>Website: "N/A" </h5>
-                  <div>
+                  {/* <div>
                     <button onClick={this.onClick} className="btn btn-success">More</button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -65,7 +59,7 @@ class Winner extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <div className="container-fluid flex-grow-1 container-p-y">
+          <div className="container-fluid flex-grow-1 test1 container-p-y">
             <div className="card mb-4 col-md-6 offset-md-3">
               <div className="card-header">
                 <h1>{this.state.information.name}</h1>
@@ -74,10 +68,10 @@ class Winner extends React.Component {
                   <h5>Telephone: {this.state.information.display_phone}</h5>
                   <h5>Address: {list}</h5>
                   <h5>Categories: {cat}</h5>
-                  <h5>Website:<a href={("www." + this.state.url)} target="_blank" rel="noopener noreferrer"> {this.state.url}</a></h5>
-                  <div>
+                  <h5>Website:<a href={("http://www." + this.state.url)} target="_blank" rel="noopener noreferrer"> {this.state.url}</a></h5>
+                  {/* <div>
                     <button onClick={this.onClick} className="btn btn-success">More</button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

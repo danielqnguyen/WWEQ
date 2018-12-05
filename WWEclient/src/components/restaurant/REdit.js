@@ -70,7 +70,6 @@ class REdit extends Component {
   onChange = evt => {
     const key = evt.target.name;
     const val = evt.target.value;
-    console.log(key, val)
     this.setState({ [key]: val },
       this.validateField(key, val)
     );
@@ -141,14 +140,12 @@ class REdit extends Component {
 
   onClick = () => this.state.formValid ? UsersServices.crudUpdate(this.state.id, this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
 
-  // onClick = () => console.log(this.state)
-
   onSuccess = () => this.props.history.push({
     pathname: "/rprofile",
     id: this.state.id
   })
 
-  onError = response => console.log(response)
+  onError = response => console.error(response)
 
   render() {
     return (

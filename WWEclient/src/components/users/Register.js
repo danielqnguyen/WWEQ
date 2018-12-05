@@ -24,7 +24,6 @@ class Register extends Component {
   onChange = evt => {
     const key = evt.target.name;
     const val = evt.target.value;
-    console.log(key, val)
     this.setState({ [key]: val },
       this.validateField(key, val)
     );
@@ -73,14 +72,11 @@ class Register extends Component {
     })
   }
 
-  onClick = () => {
-    console.log(this.state)
-    this.state.formValid ? UsersServices.register(this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
-  }
+  onClick = () => this.state.formValid ? UsersServices.register(this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
 
-  onSuccess = response => console.log(response)
+  onSuccess = () => this.props.history.push("/arprofile")
 
-  onError = response => console.log(response)
+  onError = response => console.Error(response)
 
   render() {
     return (
