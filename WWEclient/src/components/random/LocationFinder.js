@@ -4,7 +4,7 @@ class LocationFinder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: '',
+      location: ''
     };
   }
 
@@ -33,7 +33,6 @@ class LocationFinder extends Component {
             <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
         </div>
-        {/* <span style={{ backgroundColor: "#FFFF00" }}>Your highlighted text here.</span> */}
       </React.Fragment>
     );
   };

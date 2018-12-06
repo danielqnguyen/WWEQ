@@ -13,7 +13,7 @@ namespace WWEQ.Web.Controllers.Api
     [RoutePrefix("api/food")]
     public class FoodApiController : ApiController
     {
-        private IFoodService  _foodService;
+        private IFoodService _foodService;
 
             public FoodApiController(IFoodService foodService)
         {
