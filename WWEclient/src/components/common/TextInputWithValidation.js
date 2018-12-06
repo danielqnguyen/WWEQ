@@ -18,6 +18,6 @@ const TextInputValid = props => {
       <div className="invalid-feedback">{props.hintText}</div>
     </div>
   );
-};
+}
 
 export default TextInputValid;

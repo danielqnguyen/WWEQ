@@ -42,9 +42,8 @@ const RegisterForm = props => {
           Sign Up
       </button>
       </div>
-
     </React.Fragment>
-  )
+  );
 }
 
 export default RegisterForm;

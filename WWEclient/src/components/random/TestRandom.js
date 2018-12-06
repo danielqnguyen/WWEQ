@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import "./index.css";
-import YelpApi from './TestService'
+import YelpApi from './TestService';
 
 class FoodRandomizer extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class FoodRandomizer extends React.Component {
       location: '',
       restaurant: [],
       activeSlide: 0
-    }
+    };
     this.pause = this.pause.bind(this);
     this.play = this.play.bind(this);
   }
@@ -18,14 +18,14 @@ class FoodRandomizer extends React.Component {
   componentDidMount() {
     if (!("location" in this.props.location)) {
       YelpApi.yelpTen('irivne', response => {
-        this.setState({ restaurant: response.data.businesses })
-      }, error => console.error(error))
+        this.setState({ restaurant: response.data.businesses });
+      }, error => console.error(error));
     } else {
       YelpApi.yelpTen(this.props.location.location, response => {
-        this.setState({ restaurant: response.data.businesses })
+        this.setState({ restaurant: response.data.businesses });
       },
-        error => console.error(error))
-    }
+        error => console.error(error));
+    };
   }
 
   pause() {
@@ -52,7 +52,7 @@ class FoodRandomizer extends React.Component {
           />
         </a>
       </div >
-    })
+    });
     const settings = {
       className: "center",
       dots: false,
@@ -71,12 +71,12 @@ class FoodRandomizer extends React.Component {
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
           </Slider>
-          <button className="btn btn-success float-center" onClick={this.play}>Play</button>
+          <button className="btn btn-success" onClick={this.play}>Play</button>
           <button className="btn btn-danger" onClick={this.pause}> Stop </button>
         </div>
       </React.Fragment >
     );
-  }
+  };
 }
 
-export default FoodRandomizer
+export default FoodRandomizer;

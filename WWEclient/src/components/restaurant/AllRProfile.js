@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import UserServices from '../users/UsersService'
-import Ionicon from 'react-ionicons'
+import React, { Component } from 'react';
+import UserServices from '../users/UsersService';
+import Ionicon from 'react-ionicons';
 
 
 class AllRProfile extends Component {
@@ -9,11 +9,11 @@ class AllRProfile extends Component {
     this.state = {
       profiles: [],
       name: ''
-    }
+    };
   }
 
   componentDidMount() {
-    UserServices.crudAll(this.onSuccess, this.onError)
+    UserServices.crudAll(this.onSuccess, this.onError);
   }
 
   onChange = evt => {
@@ -25,7 +25,7 @@ class AllRProfile extends Component {
 
   onSuccess = response => this.setState({ profiles: response.data.Items })
 
-  onError = response => console.log(response)
+  onError = response => console.error(response)
 
   viewProfile = id => this.props.history.push({
     pathname: "/rprofile",
@@ -44,7 +44,7 @@ class AllRProfile extends Component {
         <td>{item.Name}</td>
         <td style={{ float: "right" }}><Ionicon icon="ios-eye-outline" rotate={false} fontSize="35px" color="rgb(125, 176, 24)" onClick={() => this.viewProfile(item.Id)} /></td>
       </tr >
-    })
+    });
     return (
       <React.Fragment>
         <div className="container-fluid flex-grow-1 container-p-y">
@@ -92,8 +92,8 @@ class AllRProfile extends Component {
           </div>
         </div>
       </React.Fragment >
-    )
-  }
+    );
+  };
 }
 
 export default AllRProfile;

@@ -12,14 +12,14 @@ class RProfile extends Component {
       alert: null,
       confirmAlert: null,
       exceptionAlert: null
-    }
+    };
   }
 
   componentDidMount() {
     if (!("id" in this.props.location)) {
-      this.props.history.push("/arprofile")
+      this.props.history.push("/arprofile");
     } else {
-      UserServices.crudById(this.props.location.id, this.onSuccess, this.onError)
+      UserServices.crudById(this.props.location.id, this.onSuccess, this.onError);
     }
   }
 
@@ -78,8 +78,6 @@ class RProfile extends Component {
   onSuccess = resp => this.setState({ data: resp.data.Item })
 
   onError = resp => console.error(resp)
-
-  // onClick = () => console.log(this.state)
 
   editClick = id => this.props.history.push(`/redit/${id}`)
 
@@ -148,7 +146,8 @@ class RProfile extends Component {
           </div>
         </div>
       </React.Fragment>
-    )
-  }
+    );
+  };
 }
-export default RProfile
+
+export default RProfile;

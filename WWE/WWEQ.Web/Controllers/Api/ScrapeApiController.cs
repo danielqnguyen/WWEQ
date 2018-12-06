@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+
 using WWEQ.Web.Interface;
 using WWEQ.Web.Models.Domain;
 
@@ -25,8 +23,15 @@ namespace WWEQ.Web.Controllers
         [Route]
         public HttpResponseMessage ScrapeSite(WebScrapingModel model)
         {
-            object url = _webScraping.ScrapeSite(model);
-            return Request.CreateResponse(HttpStatusCode.OK, url);
+            try
+            {
+                object url = _webScraping.ScrapeSite(model);
+                return Request.CreateResponse(HttpStatusCode.OK, url);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+
 using WWEQ.Web.Interface;
 using WWEQ.Web.Models;
 using WWEQ.Web.Models.Domain;
@@ -27,56 +24,105 @@ namespace WWEQ.Web.Controllers.Api
         [Route]
         public HttpResponseMessage Insert(FoodAddRequest model)
         {
-            int id = _foodService.Insert(model);
-            ItemResponse<int> resp = new ItemResponse<int>();
-            resp.Item = id;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    int id = _foodService.Insert(model);
+                    ItemResponse<int> resp = new ItemResponse<int>();
+                    resp.Item = id;
 
-            return Request.CreateResponse(HttpStatusCode.OK, resp);
+                    return Request.CreateResponse(HttpStatusCode.OK, resp); 
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         [HttpGet]
         [Route("{id:int}")]
         public HttpResponseMessage SelectById(int id)
         {
-            ItemResponse<FoodDomainModel> resp = new ItemResponse<FoodDomainModel>();
-            resp.Item = _foodService.SelectById(id);
-            return Request.CreateResponse(HttpStatusCode.OK, resp);
+            try
+            {
+                ItemResponse<FoodDomainModel> resp = new ItemResponse<FoodDomainModel>();
+                resp.Item = _foodService.SelectById(id);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         [HttpGet]
         [Route("{name}")]
         public HttpResponseMessage SelectByName(string name)
         {
-            ItemResponse<FoodDomainModel> resp = new ItemResponse<FoodDomainModel>();
-            resp.Item = _foodService.SelectByName(name);
-            return Request.CreateResponse(HttpStatusCode.OK, resp);
+            try
+            {
+                ItemResponse<FoodDomainModel> resp = new ItemResponse<FoodDomainModel>();
+                resp.Item = _foodService.SelectByName(name);
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (System.Exception ex) 
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         [HttpGet]
         [Route]
         public HttpResponseMessage SelectAll()
         {
-            ItemsResponse<FoodDomainModel> resp = new ItemsResponse<FoodDomainModel>();
-            resp.Items = _foodService.SelectAll();
-            return Request.CreateResponse(HttpStatusCode.OK, resp);
+            try
+            {
+                ItemsResponse<FoodDomainModel> resp = new ItemsResponse<FoodDomainModel>();
+                resp.Items = _foodService.SelectAll();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         [HttpPut]
         [Route("{id:int}")]
         public HttpResponseMessage Update(FoodDomainModel model)
         {
-            _foodService.Update(model);
-            SuccessResponse resp = new SuccessResponse();
-            return Request.CreateResponse(HttpStatusCode.OK, resp);
+            try
+            {
+                _foodService.Update(model);
+                SuccessResponse resp = new SuccessResponse();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
         [HttpDelete]
         [Route("{id:int}")]
         public HttpResponseMessage Delete(int id)
         {
-            _foodService.Delete(id);
-            SuccessResponse resp = new SuccessResponse();
-            return Request.CreateResponse(HttpStatusCode.OK, resp);
+            try
+            {
+                _foodService.Delete(id);
+                SuccessResponse resp = new SuccessResponse();
+                return Request.CreateResponse(HttpStatusCode.OK, resp);
+            }
+            catch (System.Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
     }
 }

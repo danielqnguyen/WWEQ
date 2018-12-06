@@ -20,6 +20,6 @@ const LoadingAnimation = () => {
       <div className="sk-circle12 sk-child" />
     </div>
   );
-};
+}
 
 export default LoadingAnimation;
