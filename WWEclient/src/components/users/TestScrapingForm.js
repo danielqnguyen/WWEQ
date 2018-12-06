@@ -1,5 +1,5 @@
-import React from 'react'
-import TextInput from '../common/TextInput'
+import React from 'react';
+import TextInput from '../common/TextInput';
 
 const Testform = props => {
   return (
@@ -20,9 +20,7 @@ const Testform = props => {
             </button>
       </div>
     </React.Fragment >
-  )
+  );
 }
 
-
-
-export default Testform
+export default Testform;

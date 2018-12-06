@@ -20,6 +20,6 @@ const TextInput = props => {
       />
     </div>
   );
-};
+}
 
 export default TextInput;

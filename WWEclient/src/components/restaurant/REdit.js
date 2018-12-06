@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RegisterFoodForm from '../users/RegisterFoodForm'
-import UsersServices from '../users/UsersService'
+import RegisterFoodForm from '../users/RegisterFoodForm';
+import UsersServices from '../users/UsersService';
 
 class REdit extends Component {
   constructor(props) {
@@ -35,12 +35,12 @@ class REdit extends Component {
       stateValid: false,
       zipValid: false,
       formValid: false
-    }
+    };
   }
 
   componentDidMount() {
-    let tId = this.props.match.params.id
-    UsersServices.crudById(tId, this.onGetSuccess, this.onError)
+    let tId = this.props.match.params.id;
+    UsersServices.crudById(tId, this.onGetSuccess, this.onError);
   }
 
   onGetSuccess = resp => this.setState({
@@ -123,7 +123,7 @@ class REdit extends Component {
         zipValid: zipValid
       },
       this.validateForm
-    )
+    );
   }
 
   validateForm() {
@@ -135,7 +135,7 @@ class REdit extends Component {
         this.state.cityValid &&
         this.state.stateValid &&
         this.state.zipValid
-    })
+    });
   }
 
   onClick = () => this.state.formValid ? UsersServices.crudUpdate(this.state.id, this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
@@ -181,8 +181,8 @@ class REdit extends Component {
           </div>
         </div>
       </React.Fragment>
-    )
-  }
+    );
+  };
 }
 
-export default REdit
+export default REdit;

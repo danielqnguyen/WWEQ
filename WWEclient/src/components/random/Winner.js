@@ -1,6 +1,6 @@
 import React from "react";
 import YelpApi from "./TestService";
-import UsersService from '../users/UsersService'
+import UsersService from '../users/UsersService';
 
 class Winner extends React.Component {
   constructor(props) {
@@ -10,30 +10,42 @@ class Winner extends React.Component {
       address: [],
       categories: [],
       url: ''
-    }
+    };
   }
 
   componentDidMount = () => {
     if (!("info" in this.props.location)) {
-      this.props.history.push("/")
+      this.props.history.push("/");
     } else {
       YelpApi.yelpById(this.props.location.info, response => {
         let yelpfirst = response.data
-        UsersService.testScraper({ "url": yelpfirst.url }, response => { this.setState({ url: response.data, information: yelpfirst, address: yelpfirst.location.display_address, categories: yelpfirst.categories }) },
-          error => { this.setState({ url: "N/A", information: yelpfirst, address: yelpfirst.location.display_address }) })
-      })
-    }
+        UsersService.testScraper({ "url": yelpfirst.url },
+          response => {
+            this.setState({
+              url: response.data,
+              information: yelpfirst,
+              address: yelpfirst.location.display_address,
+              categories: yelpfirst.categories
+            });
+          },
+          error => {
+            this.setState({
+              url: "N/A",
+              information: yelpfirst,
+              address: yelpfirst.location.display_address
+            });
+          });
+      });
+    };
   }
-
-  // onClick = () => console.log(this.state)
 
   render() {
     const list = this.state.address.map((item, idx) => {
       return <p key={idx}>{item}</p>
-    })
+    });
     const cat = this.state.categories.map((item, idx) => {
       return <p key={idx}>{item.title}</p>
-    })
+    });
     if (this.state.url === "N/A") {
       return (
         <React.Fragment>
@@ -55,7 +67,7 @@ class Winner extends React.Component {
             </div>
           </div>
         </React.Fragment>
-      )
+      );
     } else {
       return (
         <React.Fragment>
@@ -77,9 +89,9 @@ class Winner extends React.Component {
             </div>
           </div>
         </React.Fragment>
-      )
+      );
     }
-  }
+  };
 }
 
-export default Winner
+export default Winner;

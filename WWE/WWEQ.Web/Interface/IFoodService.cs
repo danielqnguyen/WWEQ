@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using WWEQ.Web.Models;
 using WWEQ.Web.Models.Domain;
 
@@ -9,7 +10,6 @@ namespace WWEQ.Web.Interface
         int Insert(FoodAddRequest model);
         void Delete(int id);
         List<FoodDomainModel> SelectAll();
-        //List<FoodDomainModel> Pagination(int pageNumber, int rowsToDisplay);
         FoodDomainModel SelectById(int id);
         FoodDomainModel SelectByName(string name);
         int Update(FoodDomainModel model);

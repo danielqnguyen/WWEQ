@@ -1,7 +1,7 @@
 import React from 'react';
 import TextInputWithValidation from '../common/TextInputWithValidation';
-import TextInput from '../common/TextInput'
-import PerfectScrollbar from 'react-perfect-scrollbar'
+import TextInput from '../common/TextInput';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 const RegisterFoodForm = props => {
@@ -141,7 +141,7 @@ const RegisterFoodForm = props => {
         </div>
       </PerfectScrollbar>
     </React.Fragment>
-  )
+  );
 }
 
 export default RegisterFoodForm;

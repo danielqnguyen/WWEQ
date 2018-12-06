@@ -46,7 +46,7 @@ class Navigation extends React.Component {
                 {/* <NavItem>
                   <NavLink to="/register">Register</NavLink>
                 </NavItem> */}
-                <NavItem>
+                {/* <NavItem>
                   <Dropdown>
                     <DropdownToggle nav caret>
                       <div className="d-none d-md-inline">Restaurants</div>
@@ -58,7 +58,7 @@ class Navigation extends React.Component {
                       <DropdownItem href="#!">Something else here</DropdownItem>
                     </DropdownMenu>
                   </Dropdown>
-                </NavItem>
+                </NavItem> */}
               </NavbarNav>
             </Collapse>
           </Navbar>

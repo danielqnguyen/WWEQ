@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WWEQ.Web.Models.Domain
+﻿namespace WWEQ.Web.Models.Domain
 {
     public class WebScrapingModel
     {

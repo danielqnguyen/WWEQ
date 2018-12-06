@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class LocationFinder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       location: '',
-    }
+    };
   }
 
   onChange = evt => {
     const key = evt.target.name;
     const val = evt.target.value;
-    this.setState({ [key]: val })
+    this.setState({ [key]: val });
   }
 
   onClick = () => {
     this.state.location === ''
       ? this.props.history.push({ pathname: '/random', location: 'irvine' })
-      : this.props.history.push({ pathname: '/random', location: this.state.location })
+      : this.props.history.push({ pathname: '/random', location: this.state.location });
   }
 
   render() {
@@ -35,8 +35,8 @@ class LocationFinder extends Component {
         </div>
         {/* <span style={{ backgroundColor: "#FFFF00" }}>Your highlighted text here.</span> */}
       </React.Fragment>
-    )
-  }
+    );
+  };
 }
 
-export default LocationFinder
+export default LocationFinder;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RegisterFoodForm from './RegisterFoodForm'
-import UsersServices from './UsersService'
+import RegisterFoodForm from './RegisterFoodForm';
+import UsersServices from './UsersService';
 
 class RegisterFood extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class RegisterFood extends Component {
       stateValid: false,
       zipValid: false,
       formValid: false
-    }
+    };
   }
 
   onChange = evt => {
@@ -52,7 +52,7 @@ class RegisterFood extends Component {
     let address1Valid = this.state.address1Valid;
     let cityValid = this.state.cityValid;
     let stateValid = this.state.stateValid;
-    let zipValid = this.state.zipValid
+    let zipValid = this.state.zipValid;
 
     switch (fieldName) {
       case "name":
@@ -93,7 +93,7 @@ class RegisterFood extends Component {
         zipValid: zipValid
       },
       this.validateForm
-    )
+    );
   }
 
   validateForm() {
@@ -105,14 +105,15 @@ class RegisterFood extends Component {
         this.state.cityValid &&
         this.state.stateValid &&
         this.state.zipValid
-    })
+    });
   }
 
-  onClick = () => this.state.formValid ? UsersServices.crudRegister(this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
+  onClick = () => this.state.formValid 
+  ? UsersServices.crudRegister(this.state, this.onSuccess, this.onError) 
+  : this.setState({ showErrors: true })
 
-  // onClick = () => console.log(this.state)
+  onSuccess = () => this.props.history.push("/arprofile")
 
-  onSuccess = response => this.props.history.push("/arprofile")
   onError = response => console.log(response)
 
   render() {
@@ -149,8 +150,8 @@ class RegisterFood extends Component {
           </div>
         </div>
       </React.Fragment>
-    )
-  }
+    );
+  };
 }
 
-export default RegisterFood
+export default RegisterFood;

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+
 using WWEQ.Web.Interface;
 using WWEQ.Web.Models;
 using WWEQ.Web.Models.Domain;
@@ -28,8 +26,8 @@ namespace WWEQ.Web.Services
                 {
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@Id";
-                    param.SqlDbType = System.Data.SqlDbType.Int;
-                    param.Direction = System.Data.ParameterDirection.Output;
+                    param.SqlDbType = SqlDbType.Int;
+                    param.Direction = ParameterDirection.Output;
                     paramList.Add(param);
 
                     paramList.AddWithValue("@Name", model.Name);

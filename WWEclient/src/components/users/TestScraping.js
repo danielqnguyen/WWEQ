@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 var Rating = require('react-rating');
 
@@ -7,7 +7,7 @@ class Scraping extends Component {
     super(props);
     this.state = {
       url: ''
-    }
+    };
   }
 
   onChange = evt => {
@@ -21,8 +21,8 @@ class Scraping extends Component {
       <div>
         <Rating {...this.props} initialRating={this.state.value} />
       </div>
-    )
-  }
+    );
+  };
 }
 
-export default Scraping
+export default Scraping;

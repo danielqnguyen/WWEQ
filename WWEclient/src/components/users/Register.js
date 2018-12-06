@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RegisterForm from './RegisterForm'
-import UsersServices from './UsersService'
+import RegisterForm from './RegisterForm';
+import UsersServices from './UsersService';
 
 class Register extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Register extends Component {
       passwordValid: false,
       confirmPasswordValid: false,
       formValid: false
-    }
+    };
   }
 
   onChange = evt => {
@@ -33,7 +33,7 @@ class Register extends Component {
     let fieldValidationError = this.state.formErrors;
     let emailValid = this.state.emailValid;
     let passwordValid = this.state.passwordValid;
-    let confirmPasswordValid = this.state.confirmPasswordValid
+    let confirmPasswordValid = this.state.confirmPasswordValid;
 
     switch (fieldName) {
       case "email":
@@ -60,7 +60,7 @@ class Register extends Component {
         confirmPasswordValid: confirmPasswordValid
       },
       this.validateForm
-    )
+    );
   }
 
   validateForm() {
@@ -69,10 +69,12 @@ class Register extends Component {
         this.state.emailValid &&
         this.state.passwordValid &&
         this.state.confirmPasswordValid
-    })
+    });
   }
 
-  onClick = () => this.state.formValid ? UsersServices.register(this.state, this.onSuccess, this.onError) : this.setState({ showErrors: true })
+  onClick = () => this.state.formValid 
+  ? UsersServices.register(this.state, this.onSuccess, this.onError) 
+  : this.setState({ showErrors: true })
 
   onSuccess = () => this.props.history.push("/arprofile")
 
@@ -98,8 +100,8 @@ class Register extends Component {
           </div>
         </div>
       </React.Fragment>
-    )
-  }
+    );
+  };
 }
 
-export default Register
+export default Register;

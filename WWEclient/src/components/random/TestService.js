@@ -1,5 +1,5 @@
-import axios from 'axios'
-import dotenv from 'dotenv'
+import axios from 'axios';
+import dotenv from 'dotenv';
 dotenv.config();
 
 class YelpApi {
@@ -22,4 +22,4 @@ class YelpApi {
   }
 }
 
-export default YelpApi
+export default YelpApi;

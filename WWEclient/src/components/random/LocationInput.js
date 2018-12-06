@@ -1,5 +1,5 @@
-import React from 'react'
-import TextInputValid from '../common/TextInputWithValidation'
+import React from 'react';
+import TextInputValid from '../common/TextInputWithValidation';
 
 const LocationInput = props => {
   return (
@@ -22,9 +22,7 @@ const LocationInput = props => {
         </div>
       </div>
     </React.Fragment >
-  )
+  );
 }
 
-
-
-export default LocationInput
+export default LocationInput;
