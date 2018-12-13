@@ -13,9 +13,9 @@ class TopTen extends Component {
     TTLService.list(this.onSuccess, this.onError)
   }
 
-  onSuccess = response => console.log(response.data.Items.length)
+  onSuccess = response => console.log(response.data.Items)
 
-  // onError = resp => console.log(resp)
+  onError = resp => console.log(resp)
 
   render() {
     return <h1>Hi</h1>
