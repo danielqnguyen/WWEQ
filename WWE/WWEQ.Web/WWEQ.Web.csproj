@@ -268,20 +268,23 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\FoodApiController.cs" />
+    <Compile Include="Controllers\Api\TTLApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Api\TestScrapeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\IDataProvider.cs" />
     <Compile Include="Interface\IFoodService.cs" />
+    <Compile Include="Interface\ITTLService.cs" />
     <Compile Include="Interface\IWebScraping.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddRequest\TTLAddRequest.cs" />
     <Compile Include="Models\Domain\FoodDomainModel.cs" />
+    <Compile Include="Models\Domain\TTLDomainModel.cs" />
     <Compile Include="Models\Domain\WebScrapingModel.cs" />
-    <Compile Include="Models\FoodAddRequest.cs" />
+    <Compile Include="Models\AddRequest\FoodAddRequest.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -292,6 +295,7 @@
     <Compile Include="Responses\SuccessResponse.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\FoodService.cs" />
+    <Compile Include="Services\TTLService.cs" />
     <Compile Include="Services\WebScrapingService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -358,6 +362,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\FoodApi\" />
     <Folder Include="Views\TestScrape\" />
+    <Folder Include="Views\TTLApin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -30,6 +30,7 @@ namespace WWEQ.Web
 
             container.RegisterType<IWebScraping, WebScrapingService>();
             container.RegisterType<IFoodService, FoodService>();
+            container.RegisterType<ITTLService, TTLService>();
 
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<AccountController>(new InjectionConstructor());

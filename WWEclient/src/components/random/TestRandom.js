@@ -16,20 +16,35 @@ class FoodRandomizer extends React.Component {
   }
 
   componentDidMount() {
-    if (!("location" in this.props.location)) {
-      YelpApi.yelpTen('irivne', response => {
+    console.log(this.props.location)
+    // if (!("location" in this.props.location)) {
+    //   YelpApi.yelpTen('irivne', response => {
+    //     this.setState({ restaurant: response.data.businesses });
+    //   }, error => console.error(error));
+    // } else {
+    //   YelpApi.yelpTen(this.props.location.location, response => {
+    //     this.setState({ restaurant: response.data.businesses });
+    //   },
+    //     error => console.error(error));
+    // };
+  }
+
+  componentWillMount() {
+    if (!("location" in this.props.location && "food" in this.props.location)) {
+      YelpApi.yelpTen('food', 'irivne', response => {
         this.setState({ restaurant: response.data.businesses });
       }, error => console.error(error));
     } else {
-      YelpApi.yelpTen(this.props.location.location, response => {
-        this.setState({ restaurant: response.data.businesses });
-      },
-        error => console.error(error));
-    };
+      YelpApi.yelpTen(this.props.location.food, this.props.location.location, response => {
+        console.log(response)
+        this.setState({ restaurant: response.data.businesses })
+      }, error => console.error(error))
+    }
   }
 
   pause() {
     this.slider.slickPause();
+    // console.log(this.state.restaurant)
   }
 
   play() {
@@ -43,6 +58,7 @@ class FoodRandomizer extends React.Component {
 
   render() {
     const list = this.state.restaurant.map((item, index) => {
+      // console.log(item)
       return <div key={index}>
         <a onClick={() => this.onClick(item)}>
           <img src={item.image_url}
@@ -71,8 +87,10 @@ class FoodRandomizer extends React.Component {
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
           </Slider>
-          <button className="btn btn-success" onClick={this.play}>Play</button>
-          <button className="btn btn-danger" onClick={this.pause}> Stop </button>
+          <div className="btn-group" style={{ display: "flex", justifyContent: "center" }}>
+            <button className="btn btn-success" onClick={this.play}>Spin</button>
+            <button className="btn btn-danger" onClick={this.pause}> Stop </button>
+          </div>
         </div>
       </React.Fragment >
     );

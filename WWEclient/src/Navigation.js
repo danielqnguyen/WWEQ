@@ -9,6 +9,7 @@ import RegisterFood from './components/users/RegisterFood'
 import AllRProfile from './components/restaurant/AllRProfile'
 import RProfile from './components/restaurant/RProfile'
 import REdit from './components/restaurant/REdit'
+import TopTen from './components/toptenlist/TTL'
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -43,6 +44,9 @@ class Navigation extends React.Component {
                 <NavItem>
                   <NavLink to="/random">Randomizer</NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink to="/list">Top 10</NavLink>
+                </NavItem>
                 {/* <NavItem>
                   <NavLink to="/register">Register</NavLink>
                 </NavItem> */}
@@ -71,6 +75,8 @@ class Navigation extends React.Component {
           <Route path="/arprofile" component={AllRProfile} />
           <Route path="/rprofile" component={RProfile} />
           <Route path="/redit/:id" component={REdit} />
+          <Route path="/list" component={TopTen} />
+
         </div>
       </Router>
     )
