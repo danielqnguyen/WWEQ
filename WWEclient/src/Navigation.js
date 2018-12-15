@@ -10,6 +10,8 @@ import AllRProfile from './components/restaurant/AllRProfile'
 import RProfile from './components/restaurant/RProfile'
 import REdit from './components/restaurant/REdit'
 import TopTen from './components/toptenlist/TTL'
+var x = document.getElementById("demo");
+
 
 class Navigation extends React.Component {
   constructor(props) {
