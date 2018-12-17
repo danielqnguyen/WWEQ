@@ -1,62 +1,72 @@
 import React, { Component } from 'react';
-import Select from 'react-select'
+import { connect } from 'react-redux';
+import { getLocation } from '../../redux/Action'
 
 class LocationFinder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       food: '',
-      location: ''
+      location: '',
+      cLat: '',
+      cLong: ''
     };
   }
 
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(resp => {
+        const current = (resp.coords.latitude + " " + resp.coords.longitude)
+        this.props.getUserLocation(current)
+      }, this.geoError)
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  geoError() {
+    alert("Geocoder failed.");
+  }
+
   onChange = evt => {
+    console.log(evt)
     const key = evt.target.name;
     const val = evt.target.value;
     this.setState({ [key]: val });
+    console.log(this.state)
   }
 
   onClick = () => {
+    console.log(this.props.location)
     if (this.state.food === '' && this.state.location === '') {
-      this.props.history.push({ pathname: '/random', food: 'food', location: 'irvine' })
+      this.props.history.push({ pathname: '/random', food: 'food', location: this.props.location.location })
     } else if (this.state.food === '') {
       this.props.history.push({ pathname: '/random', food: 'food', location: this.state.location })
-    } else if (this.state.location == - '') {
-      this.props.history.push({ pathname: '/random', food: this.state.food, location: 'irvine' })
+    } else if (this.state.location === '') {
+      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.props.location.location })
     } else {
       this.props.history.push({ pathname: '/random', food: this.state.food, location: this.state.location })
     }
   }
 
   render() {
-    const options = [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
-    ]
-    const customStyles = {
-      option: (provided, state) => ({
-        ...provided,
-        borderBottom: '10px dotted pink',
-        color: state.isSelected ? 'red' : 'blue',
-        padding: 200,
-      })
-    }
     return (
       <React.Fragment>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         <div className="d-flex justify-content-center align-items-center">
           {/* <h2><label className="form-label" htmlFor="Location" style={{ color: "Lime" }}>Location</label></h2> */}
-        </div>
-        <br />
-        <div className="col-sm-4">
-          {/* <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} /> */}
-          <Select options={options} />
-
-          {/* <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} /> */}
-          <Select options={options} />
-
-          <div className="input-group-append">
-            <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
+          {/* </div> */}
+          <div className="d-flex justify-content-center container">
+            <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} />
+            <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} />
+            <div className="input-group-append">
+              <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
+            </div>
           </div>
         </div>
       </React.Fragment>
@@ -64,4 +74,20 @@ class LocationFinder extends Component {
   };
 }
 
-export default LocationFinder;
+const mapStateToProps = state => {
+  return {
+    location: state.Reducer
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getUserLocation: (location) => {
+      console.log(location)
+      dispatch(getLocation(location))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationFinder);
+

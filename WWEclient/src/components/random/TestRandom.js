@@ -88,8 +88,12 @@ class FoodRandomizer extends React.Component {
             {list}
           </Slider>
           <div className="btn-group" style={{ display: "flex", justifyContent: "center" }}>
-            <button className="btn btn-success" onClick={this.play}>Spin</button>
-            <button className="btn btn-danger" onClick={this.pause}> Stop </button>
+            <button className="btn btn-success" onClick={this.play}>P
+              {/* <i className="fa fa-fw fa-play" /> */}
+            </button>
+            <button className="btn btn-danger" onClick={this.pause}> P
+              {/* <i className="fa fa-fw fa-pause" /> */}
+            </button>
           </div>
         </div>
       </React.Fragment >
