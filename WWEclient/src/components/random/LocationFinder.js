@@ -7,9 +7,7 @@ class LocationFinder extends Component {
     super(props);
     this.state = {
       food: '',
-      location: '',
-      cLat: '',
-      cLong: ''
+      location: ''
     };
   }
 
@@ -54,22 +52,18 @@ class LocationFinder extends Component {
       <React.Fragment>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-
         <div className="d-flex justify-content-center align-items-center">
-          {/* <h2><label className="form-label" htmlFor="Location" style={{ color: "Lime" }}>Location</label></h2> */}
-          {/* </div> */}
-          <div className="d-flex justify-content-center container">
-            <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} />
-            <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} />
-            <div className="input-group-append">
-              <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
-            </div>
+          <h2><label className="form-label" htmlFor="Location" style={{ color: "Green" }}>WWEQ</label></h2>
+        </div>
+        <br />
+        <div className="d-flex justify-content-center container">
+          <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} />
+          <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} />
+          <div className="input-group-append">
+            <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
         </div>
-      </React.Fragment>
+      </React.Fragment >
     );
   };
 }
