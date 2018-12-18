@@ -1,6 +1,5 @@
 import React from "react";
 import YelpApi from "./TestService";
-import UsersService from '../users/UsersService';
 
 class Winner extends React.Component {
   constructor(props) {
@@ -8,8 +7,7 @@ class Winner extends React.Component {
     this.state = {
       information: [],
       address: [],
-      categories: [],
-      url: ''
+      categories: []
     };
   }
 
@@ -18,80 +16,46 @@ class Winner extends React.Component {
       this.props.history.push("/");
     } else {
       YelpApi.yelpById(this.props.location.info, response => {
-        let yelpfirst = response.data
-        UsersService.testScraper({ "url": yelpfirst.url },
-          response => {
-            this.setState({
-              url: response.data,
-              information: yelpfirst,
-              address: yelpfirst.location.display_address,
-              categories: yelpfirst.categories
-            });
-          },
-          error => {
-            this.setState({
-              url: "N/A",
-              information: yelpfirst,
-              address: yelpfirst.location.display_address
-            });
-          });
+        console.log(response)
+        this.setState({
+          information: response.data,
+          address: response.data.location.display_address,
+          categories: response.data.categories
+        })
       });
     };
   }
 
   render() {
     const list = this.state.address.map((item, idx) => {
+      console.log(item)
       return <p key={idx}>{item}</p>
     });
     const cat = this.state.categories.map((item, idx) => {
+      console.log(item)
+
       return <p key={idx}>{item.title}</p>
     });
-    if (this.state.url === "N/A") {
-      return (
-        <React.Fragment>
-          <div className="container-fluid flex-grow-1 container-p-y test1">
-            <div className="card mb-4 col-md-5 offset-md-3">
-              <div className="card-header">
-                <h1>{this.state.information.name}</h1>
-                <div className="card-body">
-                  <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
-                  <h5>Telephone: {this.state.information.display_phone}</h5>
-                  <h5>Address: {list}</h5>
-                  <h5>Categories: {cat}</h5>
-                  <h5>Website: "N/A" </h5>
-                  {/* <div>
-                    <button onClick={this.onClick} className="btn btn-success">More</button>
-                  </div> */}
-                </div>
+    return (
+      <React.Fragment>
+        <div className="container-fluid flex-grow-1 container-p-y test1">
+          <div className="card mb-4 col-md-5 offset-md-3" style={{ overflow: "auto", height: "600px" }} >
+            <div className="card-header">
+              <h1>{this.state.information.name}</h1>
+              <div className="card-body">
+                <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
+                <h5>Telephone: {this.state.information.display_phone}</h5>
+                <h5>Address: {list}</h5>
+                <h5>Categories: {cat}</h5>
+                <h5><a href={(this.state.information.url)} target="_blank" rel="noopener noreferrer"> Yelp </a></h5>
               </div>
             </div>
           </div>
-        </React.Fragment>
-      );
-    } else {
-      return (
-        <React.Fragment>
-          <div className="container-fluid flex-grow-1 test1 container-p-y">
-            <div className="card mb-4 col-md-6 offset-md-3">
-              <div className="card-header">
-                <h1>{this.state.information.name}</h1>
-                <div className="card-body">
-                  <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
-                  <h5>Telephone: {this.state.information.display_phone}</h5>
-                  <h5>Address: {list}</h5>
-                  <h5>Categories: {cat}</h5>
-                  <h5>Website:<a href={("http://www." + this.state.url)} target="_blank" rel="noopener noreferrer"> {this.state.url}</a></h5>
-                  {/* <div>
-                    <button onClick={this.onClick} className="btn btn-success">More</button>
-                  </div> */}
-                </div>
-              </div>
-            </div>
-          </div>
-        </React.Fragment>
-      );
-    }
-  };
-}
+        </div>
+      </React.Fragment>
+    );
+  }
+};
+
 
 export default Winner;

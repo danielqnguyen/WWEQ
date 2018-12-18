@@ -20,6 +20,11 @@
   color: #61dafb;
 }
 
+.card-header {
+  background-color: #ffffff !important;
+  border-bottom: 0px
+}
+
 .test {
   position: relative;
   width: 100%;

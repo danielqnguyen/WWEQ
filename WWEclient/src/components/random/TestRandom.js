@@ -15,20 +15,6 @@ class FoodRandomizer extends React.Component {
     this.play = this.play.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props.location)
-    // if (!("location" in this.props.location)) {
-    //   YelpApi.yelpTen('irivne', response => {
-    //     this.setState({ restaurant: response.data.businesses });
-    //   }, error => console.error(error));
-    // } else {
-    //   YelpApi.yelpTen(this.props.location.location, response => {
-    //     this.setState({ restaurant: response.data.businesses });
-    //   },
-    //     error => console.error(error));
-    // };
-  }
-
   componentWillMount() {
     if (!("location" in this.props.location && "food" in this.props.location)) {
       YelpApi.yelpTen('food', 'irivne', response => {
@@ -44,7 +30,8 @@ class FoodRandomizer extends React.Component {
 
   pause() {
     this.slider.slickPause();
-    // console.log(this.state.restaurant)
+    console.log(this.state)
+    console.log(this.props.location)
   }
 
   play() {
@@ -58,15 +45,13 @@ class FoodRandomizer extends React.Component {
 
   render() {
     const list = this.state.restaurant.map((item, index) => {
-      // console.log(item)
       return <div key={index}>
-        <a onClick={() => this.onClick(item)}>
-          <img src={item.image_url}
-            height="400px"
-            width="400px"
-            alt={item.name}
-          />
-        </a>
+        <img src={item.image_url}
+          height="300px"
+          width="300px"
+          alt={item.name}
+          onClick={() => this.onClick(item)}
+        />
       </div >
     });
     const settings = {
@@ -76,23 +61,24 @@ class FoodRandomizer extends React.Component {
       autoplaySpeed: 1,
       speed: 100,
       arrows: false,
-      slidesToShow: 3,
+      slidesToShow: 1,
       centerPadding: "10px",
       useTransform: false,
       beforeChange: (next) => this.setState({ activeSlide: next })
     };
     return (
       <React.Fragment>
-        <div className="container-fluid flex-grow-1 container-p-y">
+        <div className="container">
+          <h2><label className="form-label" style={{ color: "Green", alignItems: "center" }}>Randomizer</label></h2>
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
           </Slider>
           <div className="btn-group" style={{ display: "flex", justifyContent: "center" }}>
-            <button className="btn btn-success" onClick={this.play}>P
-              {/* <i className="fa fa-fw fa-play" /> */}
+            <button className="btn btn-success" onClick={this.play}>
+              <i className="fa fa-fw fa-play" />
             </button>
-            <button className="btn btn-danger" onClick={this.pause}> P
-              {/* <i className="fa fa-fw fa-pause" /> */}
+            <button className="btn btn-danger" onClick={this.pause}>
+              <i className="fa fa-fw fa-pause" />
             </button>
           </div>
         </div>
