@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getLocation } from '../../redux/Action'
+import { getLocation } from '../../redux/Action';
 
 class LocationFinder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       food: '',
-      location: ''
+      location: '',
+      price: ''
     };
   }
 
@@ -15,7 +16,7 @@ class LocationFinder extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(resp => {
         const current = (resp.coords.latitude + " " + resp.coords.longitude)
-        this.props.getUserLocation(current)
+        this.props.getUserLocation(current);
       }, this.geoError)
     } else {
       alert("Geolocation is not supported by this browser.");
@@ -27,23 +28,20 @@ class LocationFinder extends Component {
   }
 
   onChange = evt => {
-    console.log(evt)
     const key = evt.target.name;
     const val = evt.target.value;
     this.setState({ [key]: val });
-    console.log(this.state)
   }
 
   onClick = () => {
-    console.log(this.props.location)
     if (this.state.food === '' && this.state.location === '') {
-      this.props.history.push({ pathname: '/random', food: 'food', location: this.props.location.location })
+      this.props.history.push({ pathname: '/random', food: 'food', location: this.props.location.location, price: this.state.price });
     } else if (this.state.food === '') {
-      this.props.history.push({ pathname: '/random', food: 'food', location: this.state.location })
+      this.props.history.push({ pathname: '/random', food: 'food', location: this.state.location, price: this.state.price });
     } else if (this.state.location === '') {
-      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.props.location.location })
+      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.props.location.location, price: this.state.price });
     } else {
-      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.state.location })
+      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.state.location, price: this.state.price });
     }
   }
 
@@ -59,6 +57,13 @@ class LocationFinder extends Component {
         <div className="d-flex justify-content-center container">
           <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} />
           <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} />
+          <select name="price" onChange={this.onChange}>
+            <option value="null">$</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
           <div className="input-group-append">
             <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
@@ -71,16 +76,15 @@ class LocationFinder extends Component {
 const mapStateToProps = state => {
   return {
     location: state.Reducer
-  }
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getUserLocation: (location) => {
-      console.log(location)
       dispatch(getLocation(location))
     }
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationFinder);
