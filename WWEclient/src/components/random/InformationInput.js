@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getLocation } from '../../redux/Action';
 
-class LocationFinder extends Component {
+class InformationInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,7 +53,6 @@ class LocationFinder extends Component {
         <div className="d-flex justify-content-center align-items-center">
           <h2><label className="form-label" htmlFor="Location" style={{ color: "Green" }}>WWEQ</label></h2>
         </div>
-        <br />
         <div className="d-flex justify-content-center container">
           <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} />
           <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} />
@@ -67,6 +66,12 @@ class LocationFinder extends Component {
           <div className="input-group-append">
             <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
+        </div>
+        <div className="card container p2 col-md-6" style={{ width: "350px" }}>
+          <h2>Two options</h2>
+          <p>1. Just Press Search and it will search for food in your current location</p>
+          <p>2. Or fill out the information as you feel fit</p>
+          <p>Price Ranges: $(all), 1(~$10), 2($11-$30), 3($31-$60), 4($61+)</p>
         </div>
       </React.Fragment >
     );
@@ -87,5 +92,5 @@ const mapDispatchToProps = dispatch => {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LocationFinder);
+export default connect(mapStateToProps, mapDispatchToProps)(InformationInput);
 
