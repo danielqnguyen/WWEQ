@@ -11,8 +11,13 @@ The backend may come back if I plan to add a profile page or something of the so
 
 
 #Features I Plan to Add
+
   -Twillo/SMS service to text the end results to your friends if you arent with them.
+  
   -Top Ten List based on the area
+  
   -Instead of pressing the pause button it will stop on its own and will ask if you like the choice and send you to the information page
+  
   -Open to suggestions
+  
   -TDB
