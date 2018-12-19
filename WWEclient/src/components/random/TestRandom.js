@@ -17,21 +17,18 @@ class FoodRandomizer extends React.Component {
 
   componentWillMount() {
     if (!("location" in this.props.location && "food" in this.props.location)) {
-      YelpApi.yelpTen('food', 'irivne', response => {
+      YelpApi.yelpTen('food', 'irivne', '', response => {
         this.setState({ restaurant: response.data.businesses });
       }, error => console.error(error));
     } else {
-      YelpApi.yelpTen(this.props.location.food, this.props.location.location, response => {
-        console.log(response)
-        this.setState({ restaurant: response.data.businesses })
-      }, error => console.error(error))
+      YelpApi.yelpTen(this.props.location.food, this.props.location.location, this.props.location.price, response => {
+        this.setState({ restaurant: response.data.businesses });
+      }, error => console.error(error));
     }
   }
 
   pause() {
     this.slider.slickPause();
-    console.log(this.state)
-    console.log(this.props.location)
   }
 
   play() {
@@ -68,7 +65,7 @@ class FoodRandomizer extends React.Component {
     };
     return (
       <React.Fragment>
-        <div className="container">
+        <div className="container" style={{ overflow: "hidden" }}>
           <h2><label className="form-label" style={{ color: "Green", alignItems: "center" }}>Randomizer</label></h2>
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
