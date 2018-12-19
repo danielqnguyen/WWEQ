@@ -1,5 +1,5 @@
 import React from "react";
-import YelpApi from "./TestService";
+import YelpApi from "./YelpService";
 
 class Winner extends React.Component {
   constructor(props) {
@@ -34,14 +34,12 @@ class Winner extends React.Component {
     const cat = this.state.categories.map((item, idx) => {
       return <p key={idx}>{item.title}</p>
     });
-    console.log(this.state.isLoading)
-
     return (
       <React.Fragment>
         <div className="container-fluid flex-grow-1 container-p-y test1">
           <div className="card mb-4 col-md-5 offset-md-3 p2"  >
             <div className="card-header">
-              <h1>{this.state.information.name}</h1>
+              <h2>{this.state.information.name}</h2>
               <div className="card-body">
                 <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
                 <hr />

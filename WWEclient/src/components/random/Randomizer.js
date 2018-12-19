@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import "./index.css";
-import YelpApi from './TestService';
+import YelpApi from './YelpService';
 
 class FoodRandomizer extends React.Component {
   constructor(props) {
@@ -67,6 +67,7 @@ class FoodRandomizer extends React.Component {
       <React.Fragment>
         <div className="container" style={{ overflow: "hidden" }}>
           <h2><label className="form-label" style={{ color: "Green", alignItems: "center" }}>Randomizer</label></h2>
+          <h5 style={{ color: 'white' }}>Press the pause button and if you like the choice click on the image</h5>
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
           </Slider>
