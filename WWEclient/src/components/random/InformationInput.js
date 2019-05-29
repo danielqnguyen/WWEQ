@@ -67,7 +67,8 @@ class InformationInput extends Component {
             <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
           </div>
         </div>
-        <div className="card container p2 col-md-6" style={{ width: "350px" }}>
+        <div className="card container" style={{ width: "350px", height: "350px" }}>
+          {/* need to fix styling */}
           <h2>Two options</h2>
           <p>1. Just Press Search and it will search for food in your current location</p>
           <p>2. Or fill out the information as you feel fit</p>
