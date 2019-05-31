@@ -14,6 +14,7 @@ const TextInput = props => {
         placeholder={props.placeholder}
         onChange={props.onChange}
         disabled={props.disabled}
+        style={props.style}
       />
       <div className="invalid-feedback">{props.hintText}</div>
     </div>
