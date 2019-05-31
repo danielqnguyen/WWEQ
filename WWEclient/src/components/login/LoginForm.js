@@ -1,12 +1,12 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 
-const RegistrationForm = props => {
+const LoginForm = props => {
   return (
     <div className="container-fluid flex-grow-1 container-p-y">
       <div className="card col-md-6 offset-md-3 p2" style={{ borderRadius: "30px" }}>
         <article className="card-body">
-          <h4 className="card-title">Registration</h4>
+          <h4 className="card-title">Login</h4>
           <form>
             <TextInput
               name="email"
@@ -30,17 +30,9 @@ const RegistrationForm = props => {
               hintText="Please enter a valid password"
               style={{ borderRadius: "40px" }}
             />
-            <TextInput
-              name="confirmPassword"
-              label="Confirm Password:"
-              type="password"
-              value={props.confirmPassword}
-              placeholder=""
-              onChange={props.onChange}
-              isValid={props.confirmPasswordValid}
-              hintText="Please re-enter your password"
-              style={{ borderRadius: "40px" }}
-            />
+            <div style={{ textAlign: "center" }}>
+              <a className="small" href="/register">Register</a>
+            </div>
             <br />
             <div className="row">
               <div className="col-md-12">
@@ -50,9 +42,9 @@ const RegistrationForm = props => {
                     className="btn btn-success btn-block"
                     style={{ borderRadius: "60px" }}
                     onClick={props.onClick}
-                  > Register
+                  > Login
                   </button>
-                  <p style={{ textAlign: "center" }}><a href="/login">Already have an account?</a></p>
+                  <p style={{ textAlign: "center" }}><a href="doesnotexist.com">Forgot Password?</a></p>
                 </div>
               </div>
             </div>
@@ -63,4 +55,4 @@ const RegistrationForm = props => {
   )
 }
 
-export default RegistrationForm;
+export default LoginForm;

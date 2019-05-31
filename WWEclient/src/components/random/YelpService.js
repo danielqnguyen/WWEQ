@@ -5,7 +5,7 @@ dotenv.config();
 class YelpApi {
   static yelpTen(food, location, dollars, onSuccess, onError) {
     const config = {
-      'Authorization': dotenv.REACT_APP_KEY
+      'Authorization': ""
     }
     if (dollars === "") {
       axios.get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${food}&open_now=true&location=${location}`, { headers: config })
@@ -20,7 +20,7 @@ class YelpApi {
 
   static yelpById(id, onSuccess, onError) {
     const config = {
-      'Authorization': dotenv.REACT_APP_KEY
+      'Authorization': ""
     }
     axios.get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${id}`, { headers: config })
       .then(onSuccess)

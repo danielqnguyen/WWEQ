@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import RegistrationForm from './RegistrationForm';
-import './Registration.css'
+import LoginForm from './LoginForm';
+import './Login.css'
 
-class Registration extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      confirmPassword: "",
       formErrors: {
         email: "",
-        password: "",
-        confirmPassword: ""
+        password: ""
       },
       emailValid: false,
-      passwordValid: false,
-      confirmPasswordValid: false
+      passwordValid: false
     }
   }
 
@@ -32,7 +29,6 @@ class Registration extends Component {
     let fieldValidationError = this.state.formErrors;
     let emailValid = this.state.emailValid;
     let passwordValid = this.state.passwordValid;
-    let confirmPasswordValid = this.state.confirmPasswordValid;
 
     switch (fieldName) {
       case "email":
@@ -43,18 +39,13 @@ class Registration extends Component {
         passwordValid = value.length >= 6;
         fieldValidationError.password = passwordValid;
         break;
-      case "confirmPassword":
-        confirmPasswordValid = this.state.password;
-        fieldValidationError.confirmPassword = confirmPasswordValid;
-        break;
       default:
         break;
     }
     this.setState({
       formErrors: fieldValidationError,
-      emailValid,
-      passwordValid,
-      confirmPasswordValid
+      emailValid: emailValid,
+      passwordValid: passwordValid,
     },
       this.validateForm
     );
@@ -64,24 +55,22 @@ class Registration extends Component {
     this.setState({
       formValid:
         this.state.emailValid &&
-        this.state.passwordValid &&
-        this.state.confirmPasswordValid
+        this.state.passwordValid
     })
   }
 
   onClick = () => this.state.formValid
-    ? alert('successfully registered')
+    ? alert('successfully logged in')
     : console.log(this.state) || this.setState({ showErrors: true });
 
   render() {
     return (
       <>
-        <RegistrationForm
+        <LoginForm
           email={this.state.email}
           password={this.state.password}
           emailValid={this.state.emailValid || !this.state.showErrors}
           passwordValid={this.state.passwordValid || !this.state.showErrors}
-          confirmPasswordValid={this.state.confirmPasswordValid || !this.state.showErrors}
           onChange={this.onChange}
           onClick={this.onClick}
         />
@@ -90,4 +79,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default Login;
