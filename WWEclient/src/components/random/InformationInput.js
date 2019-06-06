@@ -24,7 +24,7 @@ class InformationInput extends Component {
   }
 
   geoError() {
-    alert("Geocoder failed.");
+    alert("Cannot find location");
   }
 
   onChange = evt => {
@@ -48,29 +48,26 @@ class InformationInput extends Component {
   render() {
     return (
       <React.Fragment>
-        <br />
-        <br />
         <div className="d-flex justify-content-center align-items-center">
-          <h2><label className="form-label" htmlFor="Location" style={{ color: "Green" }}>WWEQ</label></h2>
+          <h2><label className="form-label" htmlFor="Location" style={{ color: "green" }}>WWEQ</label></h2>
         </div>
         <div className="d-flex justify-content-center container">
           <input type="text" className="form-control" placeholder="Food" name="food" onChange={this.onChange} value={this.state.food} />
           <input type="text" className="form-control" placeholder="Location" name="location" onChange={this.onChange} value={this.state.location} />
-          <select name="price" onChange={this.onChange}>
+          <select name="price" onChange={this.onChange} style={{ borderRadius: "5px" }}>
             <option value="null">$</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
-          <div className="input-group-append">
-            <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
-          </div>
+          <button className="btn btn-success" type="button" onClick={this.onClick}>Search</button>
         </div>
-        <div className="card container" style={{ width: "350px", height: "350px" }}>
+        <div className="card container" style={{ width: "350px", height: "350px", borderRadius: "5px" }}>
           {/* need to fix styling */}
-          <h2>Two options</h2>
+          <h2 style={{ alignSelf: "center" }}>Two options</h2>
           <p>1. Just Press Search and it will search for food in your current location</p>
+          <p>*currently on mobile location does not work*</p>
           <p>2. Or fill out the information as you feel fit</p>
           <p>Price Ranges: $(all), 1(~$10), 2($11-$30), 3($31-$60), 4($61+)</p>
         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm';
 import './Login.css'
+import LoginService from './LoginService'
 
 class Login extends Component {
   constructor(props) {
@@ -60,7 +61,10 @@ class Login extends Component {
   }
 
   onClick = () => this.state.formValid
-    ? alert('successfully logged in')
+    ? LoginService.loginUser(this.state.email, this.state.password, response => {
+      console.log(response)
+    }, error => { console.log(error) }
+    )
     : console.log(this.state) || this.setState({ showErrors: true });
 
   render() {

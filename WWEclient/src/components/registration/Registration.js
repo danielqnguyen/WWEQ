@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegistrationForm from './RegistrationForm';
-import './Registration.css'
+import './Registration.css';
+import RegistrationService from './RegistrationService';
 
 class Registration extends Component {
   constructor(props) {
@@ -70,7 +71,9 @@ class Registration extends Component {
   }
 
   onClick = () => this.state.formValid
-    ? alert('successfully registered')
+    ? RegistrationService.registerUser(this.state, response => {
+      console.log(response)
+    }, alert('Something went wrong please try again'))
     : console.log(this.state) || this.setState({ showErrors: true });
 
   render() {
