@@ -37,10 +37,10 @@ class Winner extends React.Component {
     return (
       <React.Fragment>
         <div className="container-fluid flex-grow-1 container-p-y">
-          <div className="card mb-4 col-md-5 offset-md-3 p2">
+          <div className="card mb-4 col-md-5 offset-md-3 p2" >
             <div className="card-header">
               <h2>{this.state.information.name}</h2>
-              <div className="card-body">
+              <div className="card-body" >
                 <img src={this.state.information.image_url} height="200px" width="200px" alt="" />
                 <hr />
                 <h5>Telephone: {this.state.information.display_phone}</h5>
@@ -48,6 +48,7 @@ class Winner extends React.Component {
                 <h5>Categories: {cat}</h5>
                 <h5><a href={(this.state.information.url)} target="_blank" rel="noopener noreferrer"> Yelp </a></h5>
               </div>
+              <button class="btn btn-success" style={{ float: "right", borderRadius: "50%" }}>Text to Friends!</button>
             </div>
           </div>
         </div>

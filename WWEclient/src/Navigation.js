@@ -14,11 +14,9 @@ class Navigation extends React.Component {
         <NavLink to="/">
           <strong style={{ color: "White" }}>WWEQ</strong>
         </NavLink >
-        <br />
         <NavLink to="/register">
           <strong style={{ color: "White" }}>Register</strong>
         </NavLink>
-        <br />
         <NavLink to="/login">
           <strong style={{ color: "White" }}>Login</strong>
         </NavLink>
