@@ -62,8 +62,8 @@ class Login extends Component {
 
   onClick = () => this.state.formValid
     ? LoginService.loginUser(this.state.email, this.state.password, this.LoginSucc,
-    error => { console.log(error) })
-    : console.log(this.state) || this.setState({ showErrors: true });
+    alert('Please double check your email or password'))
+    : this.setState({ showErrors: true });
 
     LoginSucc = () => this.props.history.push('/')
 

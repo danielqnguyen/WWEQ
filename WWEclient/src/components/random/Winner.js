@@ -1,5 +1,6 @@
 import React from "react";
 import YelpApi from "./YelpService";
+import SendTextApi from "./OtherServices"
 
 class Winner extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class Winner extends React.Component {
     };
   }
 
+  sendText = () => SendTextApi.sendText()
+
   render() {
     const list = this.state.address.map((item, idx) => {
       return <p key={idx}>{item}</p>
@@ -48,7 +51,7 @@ class Winner extends React.Component {
                 <h5>Categories: {cat}</h5>
                 <h5><a href={(this.state.information.url)} target="_blank" rel="noopener noreferrer"> Yelp </a></h5>
               </div>
-              <button class="btn btn-success" style={{ float: "right", borderRadius: "50%" }}>Text to Friends!</button>
+              <button className="btn btn-success" onClick={this.sendText} style={{ float: "right", borderRadius: "50%" }}>Text to Friends!</button>
             </div>
           </div>
         </div>
