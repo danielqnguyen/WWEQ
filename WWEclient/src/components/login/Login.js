@@ -61,11 +61,11 @@ class Login extends Component {
   }
 
   onClick = () => this.state.formValid
-    ? LoginService.loginUser(this.state.email, this.state.password, response => {
-      console.log(response)
-    }, error => { console.log(error) }
-    )
+    ? LoginService.loginUser(this.state.email, this.state.password, this.LoginSucc,
+    error => { console.log(error) })
     : console.log(this.state) || this.setState({ showErrors: true });
+
+    LoginSucc = () => this.props.history.push('/')
 
   render() {
     return (
