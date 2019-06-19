@@ -63,11 +63,14 @@ class Login extends Component {
     })
   }
 
-  onClick = async () => this.state.formValid
-    ? this.props.loginUserRequest(this.state.email, this.state.password)
-    : this.setState({ showErrors: true });
-
-  LoginSucc = () => this.props.history.push('/')
+  onClick = async () => {
+    if (this.state.formValid) {
+      this.props.loginUserRequest(this.state.email, this.state.password);
+      setTimeout(() => this.props.history.push('/'), 2000);
+    } else {
+      this.setState({ showErrors: true })
+    }
+  }
 
   render() {
     return (
@@ -80,7 +83,7 @@ class Login extends Component {
           onChange={this.onChange}
           onClick={this.onClick}
         />
-        <button onClick={() => console.log(this.props)}></button>
+        <button onClick={() => console.log(sessionStorage)}></button>
       </>
     );
   }
@@ -97,8 +100,6 @@ const mapDispatchToProps = dispatch => {
     loginUserRequest: (userName, password) => {
       dispatch(loginUser(userName, password))
         .then(resp => {
-          // dispatch(getId(userName));
-          console.log(resp)
           return resp;
         })
         .catch(err => {
@@ -109,9 +110,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

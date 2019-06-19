@@ -22,15 +22,37 @@ export function loginUser(userName, password) {
   };
 }
 
-export function getId(email) {
+export function loginStatus(token) {
+  const config = {
+    Authorization: `Bearer ${token}`
+  };
   return {
-    type: "GET_USER_ID",
+    type: "CHECK_LOGIN_STATE",
     payload: axios
-      .get(`/api/users/getid?email=${email}`, { withCredentials: true })
+      .get(`/api/account/userinfo`, { headers: config })
       .then(resp => {
-        sessionStorage.setItem("userId", resp.data.Item);
-        return resp;
+        if (sessionStorage.getItem("token") !== null) {
+          return resp.data;
+        } else {
+          return false;
+        }
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err);
+        return false;
+      })
+  };
+}
+
+export function logoutUser() {
+  return {
+    type: "LOGOUT_USER",
+    payload: new Promise((resolve, reject) => {
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("userId");
+      setTimeout(() => {
+        resolve(true);
+      }, 500);
+    })
   };
 }
