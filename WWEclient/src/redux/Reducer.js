@@ -1,20 +1,50 @@
-const Reducer = (
+const UserReducer = (
   state = {
-    location: ''
+    isLoggedIn: false,
+    userName: "",
+    userId: ""
   },
   action
 ) => {
   switch (action.type) {
-    case "GET_USER_LOCATION":
+    case "LOGIN_USER_FULFILLED":
       state = {
         ...state,
-        location: action.payload
-      }
+        isLoggedIn: action.payload === undefined ? false : true,
+        userName: action.payload.userName
+      };
+      break;
+    case "CHECK_LOGIN_STATE_FULFILLED":
+      state = {
+        ...state,
+        isLoggedIn: action.payload.Email ? true : false,
+        userName: action.payload.Email
+      };
+      break;
+    case "LOGOUT_USER_FULFILLED":
+      state = {
+        ...state,
+        isLoggedIn: !action.payload,
+        userName: "",
+        userId: ""
+      };
+      break;
+    case "GET_USER_ID_FULFILLED":
+      state = {
+        ...state,
+        userId: action.payload.data.Item
+      };
+      break;
+    case "GET_USER_MACROS_FULFILLED":
+      state = {
+        ...state,
+        macros: action.payload.Item
+      };
       break;
     default:
-      break;
+      return state;
   }
   return state;
-}
+};
 
-export default Reducer;
+export default UserReducer;

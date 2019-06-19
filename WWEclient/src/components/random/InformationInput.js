@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getLocation } from '../../redux/Action';
 
 class InformationInput extends Component {
   constructor(props) {
@@ -8,7 +6,8 @@ class InformationInput extends Component {
     this.state = {
       food: '',
       location: '',
-      price: ''
+      price: '',
+      cLocation: ''
     };
   }
 
@@ -16,7 +15,7 @@ class InformationInput extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(resp => {
         const current = (resp.coords.latitude + " " + resp.coords.longitude)
-        this.props.getUserLocation(current);
+        this.setState({ cLocation: current })
       }, this.geoError)
     } else {
       alert("Geolocation is not supported by this browser.");
@@ -35,11 +34,11 @@ class InformationInput extends Component {
 
   onClick = () => {
     if (this.state.food === '' && this.state.location === '') {
-      this.props.history.push({ pathname: '/random', food: 'food', location: this.props.location.location, price: this.state.price });
+      this.props.history.push({ pathname: '/random', food: 'food', location: this.state.cLocation, price: this.state.price });
     } else if (this.state.food === '') {
       this.props.history.push({ pathname: '/random', food: 'food', location: this.state.location, price: this.state.price });
     } else if (this.state.location === '') {
-      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.props.location.location, price: this.state.price });
+      this.props.history.push({ pathname: '/random', food: this.state.food, location: this.state.cLocation, price: this.state.price });
     } else {
       this.props.history.push({ pathname: '/random', food: this.state.food, location: this.state.location, price: this.state.price });
     }
@@ -76,19 +75,6 @@ class InformationInput extends Component {
   };
 }
 
-const mapStateToProps = state => {
-  return {
-    location: state.Reducer
-  };
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getUserLocation: (location) => {
-      dispatch(getLocation(location))
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(InformationInput);
+export default InformationInput;
 

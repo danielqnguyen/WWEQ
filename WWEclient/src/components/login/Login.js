@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import LoginForm from './LoginForm';
-import './Login.css'
-import LoginService from './LoginService'
+import './Login.css';
+// import LoginService from './LoginService';
+import { connect } from "react-redux";
+import { loginUser } from "../../redux/Action";
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -60,12 +63,11 @@ class Login extends Component {
     })
   }
 
-  onClick = () => this.state.formValid
-    ? LoginService.loginUser(this.state.email, this.state.password, this.LoginSucc,
-    alert('Please double check your email or password'))
+  onClick = async () => this.state.formValid
+    ? this.props.loginUserRequest(this.state.email, this.state.password)
     : this.setState({ showErrors: true });
 
-    LoginSucc = () => this.props.history.push('/')
+  LoginSucc = () => this.props.history.push('/')
 
   render() {
     return (
@@ -78,9 +80,38 @@ class Login extends Component {
           onChange={this.onChange}
           onClick={this.onClick}
         />
+        <button onClick={() => console.log(this.props)}></button>
       </>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    user: state.Reducer
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUserRequest: (userName, password) => {
+      dispatch(loginUser(userName, password))
+        .then(resp => {
+          // dispatch(getId(userName));
+          console.log(resp)
+          return resp;
+        })
+        .catch(err => {
+          alert("Error: Invalid Username or Password");
+          return err;
+        });
+    }
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);
