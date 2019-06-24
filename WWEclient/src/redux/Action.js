@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 
 // export function getLocation(location) {
 //   return {
@@ -16,6 +16,7 @@ export function loginUser(userName, password) {
       .post("/token", data, { headers: headers, withCredentials: true })
       .then(resp => {
         sessionStorage.setItem("token", resp.data.access_token);
+        sessionStorage.setItem("userName", resp.data.userName);
         return resp.data;
       })
       .catch(err => console.error(err))
@@ -44,15 +45,15 @@ export function loginStatus(token) {
   };
 }
 
-export function logoutUser() {
-  return {
-    type: "LOGOUT_USER",
-    payload: new Promise((resolve, reject) => {
-      sessionStorage.removeItem("token");
-      sessionStorage.removeItem("userId");
-      setTimeout(() => {
-        resolve(true);
-      }, 500);
-    })
-  };
-}
+// export function logoutUser() {
+//   return {
+//     type: "LOGOUT_USER",
+//     payload: new Promise((resolve, reject) => {
+//       sessionStorage.removeItem("token");
+//       sessionStorage.removeItem("userId");
+//       setTimeout(() => {
+//         resolve(true);
+//       }, 500);
+//     })
+//   };
+// }

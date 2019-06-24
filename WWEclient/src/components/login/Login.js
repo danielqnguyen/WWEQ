@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import LoginForm from './LoginForm';
-import './Login.css';
-// import LoginService from './LoginService';
+import React, { Component } from "react";
+import LoginForm from "./LoginForm";
+import "./Login.css";
 import { connect } from "react-redux";
 import { loginUser } from "../../redux/Action";
 import { withRouter } from "react-router-dom";
@@ -18,7 +17,7 @@ class Login extends Component {
       },
       emailValid: false,
       passwordValid: false
-    }
+    };
   }
 
   onChange = evt => {
@@ -26,8 +25,8 @@ class Login extends Component {
     const val = evt.target.value;
     this.setState({ [key]: val }, () => {
       this.validateField(key, val);
-    })
-  }
+    });
+  };
 
   validateField = (fieldName, value) => {
     let fieldValidationError = this.state.formErrors;
@@ -46,31 +45,30 @@ class Login extends Component {
       default:
         break;
     }
-    this.setState({
-      formErrors: fieldValidationError,
-      emailValid: emailValid,
-      passwordValid: passwordValid,
-    },
+    this.setState(
+      {
+        formErrors: fieldValidationError,
+        emailValid: emailValid,
+        passwordValid: passwordValid
+      },
       this.validateForm
     );
-  }
+  };
 
   validateForm() {
     this.setState({
-      formValid:
-        this.state.emailValid &&
-        this.state.passwordValid
-    })
+      formValid: this.state.emailValid && this.state.passwordValid
+    });
   }
 
   onClick = async () => {
     if (this.state.formValid) {
       this.props.loginUserRequest(this.state.email, this.state.password);
-      setTimeout(() => this.props.history.push('/'), 2000);
+      setTimeout(() => this.props.history.push("/"), 2000);
     } else {
-      this.setState({ showErrors: true })
+      this.setState({ showErrors: true });
     }
-  }
+  };
 
   render() {
     return (
@@ -83,7 +81,7 @@ class Login extends Component {
           onChange={this.onChange}
           onClick={this.onClick}
         />
-        <button onClick={() => console.log(sessionStorage)}></button>
+        <button onClick={() => console.log(sessionStorage)} />
       </>
     );
   }
@@ -110,4 +108,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);
