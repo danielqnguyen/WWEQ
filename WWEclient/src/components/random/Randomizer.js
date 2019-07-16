@@ -1,13 +1,13 @@
 import React from "react";
 import Slider from "react-slick";
-import "./index.css";
-import YelpApi from './YelpService';
+import "./Randomizer.css";
+import YelpApi from "./YelpService";
 
 class FoodRandomizer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: '',
+      location: "",
       restaurant: [],
       activeSlide: 0
     };
@@ -17,13 +17,25 @@ class FoodRandomizer extends React.Component {
 
   componentWillMount() {
     if (!("location" in this.props.location && "food" in this.props.location)) {
-      YelpApi.yelpTen('food', 'irivne', '', response => {
-        this.setState({ restaurant: response.data.businesses });
-      }, error => console.error(error));
+      YelpApi.yelpTen(
+        "food",
+        "irivne",
+        "",
+        response => {
+          this.setState({ restaurant: response.data.businesses });
+        },
+        error => console.error(error)
+      );
     } else {
-      YelpApi.yelpTen(this.props.location.food, this.props.location.location, this.props.location.price, response => {
-        this.setState({ restaurant: response.data.businesses });
-      }, error => console.error(error));
+      YelpApi.yelpTen(
+        this.props.location.food,
+        this.props.location.location,
+        this.props.location.price,
+        response => {
+          this.setState({ restaurant: response.data.businesses });
+        },
+        error => console.error(error)
+      );
     }
   }
 
@@ -35,21 +47,25 @@ class FoodRandomizer extends React.Component {
     this.slider.slickPlay();
   }
 
-  onClick = item => this.props.history.push({
-    pathname: '/winner',
-    info: item.id
-  })
+  onClick = item =>
+    this.props.history.push({
+      pathname: "/winner",
+      info: item.id
+    });
 
   render() {
     const list = this.state.restaurant.map((item, index) => {
-      return <div key={index}>
-        <img src={item.image_url}
-          height="300px"
-          width="300px"
-          alt={item.name}
-          onClick={() => this.onClick(item)}
-        />
-      </div >
+      return (
+        <div key={index}>
+          <img
+            src={item.image_url}
+            height="300px"
+            width="300px"
+            alt={item.name}
+            onClick={() => this.onClick(item)}
+          />
+        </div>
+      );
     });
     const settings = {
       className: "center",
@@ -61,17 +77,30 @@ class FoodRandomizer extends React.Component {
       slidesToShow: 1,
       centerPadding: "10px",
       useTransform: false,
-      beforeChange: (next) => this.setState({ activeSlide: next })
+      beforeChange: next => this.setState({ activeSlide: next })
     };
     return (
       <React.Fragment>
         <div className="container" style={{ overflow: "hidden" }}>
-          <h2><label className="form-label" style={{ color: "Green", alignItems: "center" }}>Randomizer</label></h2>
-          <h5 style={{ color: 'white' }}>Press the pause button and if you like the choice click on the image</h5>
+          <h2>
+            <label
+              className="form-label"
+              style={{ color: "Green", alignItems: "center" }}
+            >
+              Randomizer
+            </label>
+          </h2>
+          <h5 style={{ color: "white" }}>
+            Press the pause button and if you like what you see click on the
+            image
+          </h5>
           <Slider ref={slider => (this.slider = slider)} {...settings}>
             {list}
           </Slider>
-          <div className="btn-group" style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            className="btn-group"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
             <button className="btn btn-success" onClick={this.play}>
               <i className="fa fa-fw fa-play" />
             </button>
@@ -80,9 +109,9 @@ class FoodRandomizer extends React.Component {
             </button>
           </div>
         </div>
-      </React.Fragment >
+      </React.Fragment>
     );
-  };
+  }
 }
 
 export default FoodRandomizer;
