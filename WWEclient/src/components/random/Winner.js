@@ -47,7 +47,7 @@ class Winner extends React.Component {
     });
     return (
       <React.Fragment>
-        <div className="col-md-5 offset-md-3 p2">
+        <div className="col-md-5 offset-md-3 p2" style={{ paddingTop: "10px" }}>
           <div className="card-header">
             <h2>
               <center>{this.state.information.name}</center>

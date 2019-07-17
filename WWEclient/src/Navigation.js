@@ -15,13 +15,20 @@ const Navigation = () => {
     return (
       <React.Fragment>
         <NavLink to="/">
-          <strong style={{ color: "White" }}>WWEQ</strong>
+          <img
+            src="https://www.w3schools.com/html/pic_trulli.jpg"
+            width="60px"
+            height="45px"
+          />
+          {/* placeholder logo */}
         </NavLink>
         <NavLink to="/register">
-          <strong style={{ color: "White" }}>Register</strong>
+          <c style={{ color: "White", float: "right" }}>Register</c>
         </NavLink>
         <NavLink to="/login">
-          <strong style={{ color: "White" }}>Login</strong>
+          <c style={{ color: "White", float: "right", paddingRight: "5px" }}>
+            Login
+          </c>
         </NavLink>
 
         <Route exact path="/" component={InformationInput} />
@@ -35,12 +42,23 @@ const Navigation = () => {
     return (
       <React.Fragment>
         <NavLink to="/">
-          <strong style={{ color: "White" }}>WWEQ</strong>
+          <img
+            src="https://www.w3schools.com/html/pic_trulli.jpg"
+            width="60px"
+            height="45px"
+          />
+          {/* placeholder logo */}{" "}
         </NavLink>
-        <p style={{ color: "White" }}>Welcome {sessionStorage.userName}!</p>
-        <button className="btn btn-success" onClick={() => logout()}>
-          <strong style={{ color: "White" }}>LogOut</strong>
+        <button
+          className="btn btn-success"
+          onClick={() => logout()}
+          style={{ float: "right", height: "35px" }}
+        >
+          LogOut
         </button>
+        <p style={{ color: "White", float: "right", paddingRight: "5px" }}>
+          Hi, {sessionStorage.userName}!
+        </p>
 
         <Route exact path="/" component={InformationInput} />
         <Route exact path="/random" component={FoodRandomizer} />
