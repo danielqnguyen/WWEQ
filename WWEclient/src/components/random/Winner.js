@@ -78,6 +78,7 @@ class Winner extends React.Component {
               <center>
                 <button className="btn btn-success" onClick={this.sendText}>
                   Text to Friends!
+                  {/* currently sends to default number, need to create an input field */}
                 </button>
               </center>
             </div>

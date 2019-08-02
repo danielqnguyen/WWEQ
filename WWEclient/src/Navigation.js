@@ -16,19 +16,19 @@ const Navigation = () => {
       <React.Fragment>
         <NavLink to="/">
           <img
-            src="https://www.w3schools.com/html/pic_trulli.jpg"
+            src="http://eatlogos.com/food_and_drinks/thumb/food_vector_logo_inspiration.jpg"
             width="60px"
             height="45px"
           />
           {/* placeholder logo */}
         </NavLink>
         <NavLink to="/register">
-          <c style={{ color: "White", float: "right" }}>Register</c>
+          <p style={{ color: "White", float: "right" }}>Register</p>
         </NavLink>
         <NavLink to="/login">
-          <c style={{ color: "White", float: "right", paddingRight: "5px" }}>
+          <p style={{ color: "White", float: "right", paddingRight: "5px" }}>
             Login
-          </c>
+          </p>
         </NavLink>
 
         <Route exact path="/" component={InformationInput} />
@@ -43,19 +43,19 @@ const Navigation = () => {
       <React.Fragment>
         <NavLink to="/">
           <img
-            src="https://www.w3schools.com/html/pic_trulli.jpg"
+            src="http://eatlogos.com/food_and_drinks/thumb/food_vector_logo_inspiration.jpg"
             width="60px"
             height="45px"
           />
           {/* placeholder logo */}{" "}
         </NavLink>
-        <button
-          className="btn btn-success"
+        <p
+          // className="btn btn-success"
           onClick={() => logout()}
-          style={{ float: "right", height: "35px" }}
+          style={{ float: "right", height: "35px", color: "white" }}
         >
           LogOut
-        </button>
+        </p>
         <p style={{ color: "White", float: "right", paddingRight: "5px" }}>
           Hi, {sessionStorage.userName}!
         </p>
